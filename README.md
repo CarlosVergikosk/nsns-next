@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NSNS — Neurodiversity Support Network Switzerland
 
-## Getting Started
+Next.js 16 + React 19 + Tailwind CSS 4 port of the NSNS design prototype.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Switching the font
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All Google Fonts can be swapped in a single file: [`app/fonts.ts`](./app/fonts.ts).
 
-## Learn More
+```ts
+// app/fonts.ts
+import { Inter } from "next/font/google";     // ← change this import
+export const appFont = Inter({                 // ← and this call
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-sans",
+  display: "swap",
+});
+```
 
-To learn more about Next.js, take a look at the following resources:
+Any font exported by `next/font/google` works — for example `Manrope`, `Plus_Jakarta_Sans`, `Nunito`, `DM_Sans`, `Sora`, `Outfit`. If the new font doesn't ship all six weights (400–900), trim the `weight` array to the ones it supports. Restart `npm run dev` — the entire site picks up the new font via the `--font-sans` CSS variable.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Switching the colour theme
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Five palettes ship out of the box (Soft Sand, Lavender, Seafoam, Cocoa Warm, Nordic Mist). Users can switch live in the Tweaks panel (cog icon, bottom-right). Preferences persist in `localStorage`.
 
-## Deploy on Vercel
+To add a new palette, edit [`app/globals.css`](./app/globals.css) — add a `[data-theme="yourname"]` block with your variable overrides, then add the option to [`components/tweaks/TweaksPanel.tsx`](./components/tweaks/TweaksPanel.tsx).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+├── layout.tsx              Font + Nav + Footer + TweaksPanel
+├── page.tsx                Home
+├── fonts.ts                ← SWAP FONT HERE
+├── globals.css             CSS variables + theme palettes + Tailwind v4 bridge
+├── not-found.tsx
+├── coaches/                Directory + [id] detail
+├── assessments/
+├── blog/
+├── about-neurodiversity/
+├── donate/
+└── contact/
+components/
+├── layout/                 Nav, Footer, SkipLink
+├── ui/                     Icon, Photo, Avatar, Blob, Squiggle, PageHero, Button, Chip
+├── home/                   HeroSection, HikingTrail, WhatWeDo, StatsSection…
+└── tweaks/                 TweaksPanel (theme/motion/text-size), useTweaks hook
+lib/
+├── data.ts                 Typed content
+└── types.ts
+public/
+└── assets/
+    ├── hero.jpg
+    └── logo.png
+```
+
+## Accessibility
+
+- Skip-link to `#main` content
+- `:focus-visible` rings on every interactive element
+- **Reduced motion** mode (Tweaks panel) — kills all transitions/animations
+- **Plain-language** mode (Tweaks panel) — hides `.plain-hide` paragraphs
+- **Text-size** scale (Tweaks panel) — 90–130 %
+- Every form input has a label; labels persist after `sent` state reset
+```

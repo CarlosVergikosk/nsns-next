@@ -1,26 +1,405 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   NSNS — Neurodiversity Support Network Switzerland
+   Warm, soft, calming palette built around the brand teal + purple.
+   ───────────────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand — flagships, accents, basics & shades per NSNS Brand Guidelines v1 */
+  --teal: #036378;          /* Ocean Deep / Bright Blue */
+  --teal-deep: #024556;
+  --teal-ink: #01323f;
+  --teal-soft: #b5e3f2;     /* Light Blue */
+  --teal-softer: #ebfbfe;   /* Azure */
+
+  --purple: #9051a0;        /* Passionate Purple */
+  --purple-deep: #6c3e79;   /* Amethyst */
+  --purple-ink: #492951;    /* Deep Violet */
+  --purple-soft: #e3d0ec;   /* Loveable Lilac */
+  --purple-softer: #dbcae2; /* Thistle */
+
+  --lemon: #fbf8c8;         /* Lifey Lemon */
+  --peach: #f2d1aa;         /* Just Peachy */
+
+  --bg: #fbfbfb;            /* Not Quite White */
+  --bg-raised: #eff1ed;     /* Slate Clean */
+  --bg-card: #ffffff;
+  --bg-tint: #ede5f1;       /* softened Thistle */
+  --bg-muted: #dbcae2;      /* Thistle */
+
+  --ink: #012027;           /* Back to Black */
+  --ink-soft: #1a353d;
+  --ink-muted: #4a5a63;
+  --ink-faint: #7a858c;
+
+  --brand-border: #e6dbeb;
+  --brand-border-strong: #c7add3; /* Loveable Lilac */
+
+  --accent-warm: #f2d1aa;   /* Just Peachy */
+  --accent-cool: #b5e3f2;   /* Light Blue */
+
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(42, 37, 51, 0.04),
+    0 2px 8px rgba(42, 37, 51, 0.04);
+  --shadow: 0 4px 12px rgba(42, 37, 51, 0.06),
+    0 12px 32px rgba(42, 37, 51, 0.06);
+  --shadow-lg: 0 8px 24px rgba(42, 37, 51, 0.08),
+    0 24px 60px rgba(42, 37, 51, 0.08);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 280ms;
 }
+
+/* ── Theme palettes ─── */
+
+[data-theme="lavender"] {
+  --bg: #f8f2fa;
+  --bg-raised: #fdfaff;
+  --bg-tint: #ead6ee;
+  --bg-muted: #d9b9df;
+  --brand-border: #e1cce6;
+  --brand-border-strong: #b99dc4;
+}
+
+[data-theme="seafoam"] {
+  --bg: #f0f7f9;
+  --bg-raised: #f9fcfd;
+  --bg-tint: #cbe8f0;
+  --bg-muted: #a7d4e0;
+  --brand-border: #bcdae2;
+  --brand-border-strong: #8fbcc9;
+}
+
+[data-theme="cocoa"] {
+  --bg: #f7f1ea;
+  --bg-raised: #fbf5ee;
+  --bg-tint: #eddccb;
+  --bg-muted: #dcc4a9;
+  --brand-border: #e7d8c3;
+  --brand-border-strong: #c9b597;
+}
+
+[data-theme="mist"] {
+  --bg: #f1f3f7;
+  --bg-raised: #fbfcfe;
+  --bg-tint: #e0e6f0;
+  --bg-muted: #c6d0df;
+  --brand-border: #d9dfeb;
+  --brand-border-strong: #aab4c6;
+}
+
+/* ── Tailwind v4 theme bridge ─────────────────────────────────
+   Expose CSS vars as Tailwind utilities (bg-teal, text-ink-soft,
+   border-brand-strong, etc.). `inline` so values resolve per-theme.
+   ───────────────────────────────────────────────────────────── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-teal-ink: var(--teal-ink);
+  --color-teal-soft: var(--teal-soft);
+  --color-teal-softer: var(--teal-softer);
+
+  --color-purple: var(--purple);
+  --color-purple-deep: var(--purple-deep);
+  --color-purple-ink: var(--purple-ink);
+  --color-purple-soft: var(--purple-soft);
+  --color-purple-softer: var(--purple-softer);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-card: var(--bg-card);
+  --color-bg-tint: var(--bg-tint);
+  --color-bg-muted: var(--bg-muted);
+
+  --color-brand-border: var(--brand-border);
+  --color-brand-border-strong: var(--brand-border-strong);
+
+  --color-accent-warm: var(--accent-warm);
+  --color-accent-cool: var(--accent-cool);
+
+  --color-lemon: var(--lemon);
+  --color-peach: var(--peach);
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-display), var(--font-sans), ui-sans-serif,
+    system-ui, sans-serif;
+
+  --radius-sm: var(--r-sm);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-pill: var(--r-pill);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Reset & base ────────────────────────────────────────────── */
+/* Wrapped in @layer base so Tailwind utilities (text-white, etc.)
+   win the cascade. Unlayered rules beat all layers regardless of
+   order — and that's what was making `a { color: inherit }` mask
+   `text-white` on <Link> components. */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, "Segoe UI",
+      sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Inclusive Sans ships only a Regular weight, so any bolder UI text would
+     otherwise get a thin synthesized bold. Route all bold UI chrome through
+     the display font (Zen Maru Gothic) — which the brand allows for
+     buttons / labels / merch — so weight renders as real glyphs. */
+  button,
+  strong,
+  b,
+  .eyebrow,
+  [class*="font-semibold"],
+  [class*="font-bold"],
+  [class*="font-extrabold"],
+  [class*="font-black"] {
+    font-family: var(--font-display), var(--font-sans), ui-sans-serif,
+      system-ui, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), var(--font-sans), ui-sans-serif,
+      system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 7vw, 4.4rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: clamp(1.55rem, 4.8vw, 2.8rem);
+    line-height: 1.15;
+  }
+  h3 {
+    font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+    color: var(--ink-soft);
+  }
+  p + p {
+    margin-top: 1em;
+  }
+
+  ::selection {
+    background: var(--purple-soft);
+    color: var(--purple-deep);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ── Helpers ─────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--purple);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  background: var(--purple);
+  border-radius: 2px;
+}
+
+.accent-bar {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--teal) 0%,
+    var(--teal) 50%,
+    var(--purple-deep) 50%,
+    var(--purple-deep) 100%
+  );
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.ph {
+  position: relative;
+  background: var(--bg-muted);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 16px;
+  width: 100%;
+}
+
+.ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 30% 30%,
+      color-mix(in oklab, var(--teal-soft) 60%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      color-mix(in oklab, var(--purple-soft) 60%, transparent),
+      transparent 60%
+    );
+  opacity: 0.55;
+}
+
+.ph > * {
+  position: relative;
+  z-index: 1;
+}
+.ph.tint-teal::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    color-mix(in oklab, var(--teal-soft) 75%, transparent),
+    transparent 65%
+  );
+}
+.ph.tint-purple::before {
+  background: radial-gradient(
+    circle at 70% 70%,
+    color-mix(in oklab, var(--purple-soft) 75%, transparent),
+    transparent 65%
+  );
+}
+.ph.tint-warm::before {
+  background: radial-gradient(
+    circle at 50% 40%,
+    color-mix(in oklab, var(--accent-warm) 50%, transparent),
+    transparent 65%
+  );
+}
+
+.ph-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
+
+.page-enter {
+  animation: pageIn 420ms var(--ease);
+}
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+html[data-plain="1"] .plain-hide {
+  display: none !important;
+}
+html[data-plain="1"] .plain-short {
+  font-size: 1.05rem;
+}
+
+main {
+  scroll-margin-top: 80px;
 }
