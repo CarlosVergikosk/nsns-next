@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
+import { useI18n } from "@/lib/i18n/I18nProvider"
 
 export function HomeCta() {
+  const { t } = useI18n()
+  const c = t.home.cta
   return (
     <section className="pt-10 pb-16 md:pb-24">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8">
@@ -13,25 +18,23 @@ export function HomeCta() {
         >
           <div>
             <h2 className="text-white mb-4 max-w-[500px]">
-              Not sure where to start?
+              {c.title}
             </h2>
             <p className="opacity-95 text-white text-[1rem] md:text-[1.08rem] max-w-[460px] mb-6 md:mb-8">
-              Send us a line and we&apos;ll help you work out whether coaching,
-              assessment, community or simply a resource list is what you need
-              right now. There&apos;s no wrong answer.
+              {c.body}
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-[26px] py-[14px] rounded-pill bg-white text-purple-deep font-bold text-[1rem] hover:-translate-y-px transition"
               >
-                Get in touch
+                {c.contact}
               </Link>
               <Link
                 href="/donate"
                 className="inline-flex items-center gap-2 px-[26px] py-[14px] rounded-pill bg-transparent border-2 border-white text-white font-bold text-[1rem] hover:bg-white hover:text-purple-deep transition"
               >
-                Or support our work
+                {c.donate}
               </Link>
             </div>
           </div>

@@ -7,7 +7,7 @@ export interface Counselor {
   canton: string;
   languages: string[];
   specialties: string[];
-  modes: ("In-person" | "Online" | "Hybrid")[];
+  modes: string[];
   rate: string;
   accepting: boolean;
   years: number;
@@ -25,7 +25,7 @@ export interface EventItem {
   time: string;
   title: string;
   location: string;
-  format: "In person" | "Online";
+  format: string;
   price: string;
   capacity: string;
   description: string;

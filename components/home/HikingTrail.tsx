@@ -1,46 +1,20 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { useI18n } from "@/lib/i18n/I18nProvider"
 
-interface Checkpoint {
+interface CheckpointMeta {
   t: number
   num: string
-  title: string
-  body: string
-  cta: string
   page: string
   tint: "teal" | "purple"
 }
 
-const checkpoints: Checkpoint[] = [
-  {
-    t: 0.1,
-    num: "01",
-    title: "Suspecting you might be neurodivergent",
-    body: "You've been reading, wondering, recognising yourself in other people's stories. That quiet hunch is a legitimate starting point — nothing more is required to reach out.",
-    cta: "New to neurodiversity?",
-    page: "/about-neurodiversity",
-    tint: "teal",
-  },
-  {
-    t: 0.48,
-    num: "02",
-    title: "Considering getting assessed",
-    body: "Exploring whether a formal adult ADHD or autism assessment is right for you. We'll walk you through Swiss pathways, costs, and what the process actually looks like.",
-    cta: "Assessment options",
-    page: "/assessments",
-    tint: "purple",
-  },
-  {
-    t: 0.86,
-    num: "03",
-    title: "Understanding your needs, starting coaching",
-    body: "Whether you have a diagnosis or not, a coach or peer mentor can help you translate self-knowledge into day-to-day life that actually works for your brain.",
-    cta: "Find a coach",
-    page: "/coaches",
-    tint: "teal",
-  },
+const checkpointMeta: CheckpointMeta[] = [
+  { t: 0.1, num: "01", page: "/about-neurodiversity", tint: "teal" },
+  { t: 0.48, num: "02", page: "/assessments", tint: "purple" },
+  { t: 0.86, num: "03", page: "/coaches", tint: "teal" },
 ]
 
 const pathD =
@@ -67,6 +41,18 @@ const treePositions: [number, number][] = [
 ]
 
 export function HikingTrail() {
+  const { t } = useI18n()
+  const trail = t.home.trail
+  const checkpoints = useMemo(
+    () =>
+      checkpointMeta.map((m, i) => ({
+        ...m,
+        title: trail.checkpoints[i].title,
+        body: trail.checkpoints[i].body,
+        cta: trail.checkpoints[i].cta,
+      })),
+    [trail],
+  )
   const wrapRef = useRef<HTMLElement>(null)
   const pathRef = useRef<SVGPathElement>(null)
   const [progress, setProgress] = useState(0)
@@ -142,18 +128,16 @@ export function HikingTrail() {
         background:
           "linear-gradient(180deg, var(--bg) 0%, var(--teal-softer) 40%, var(--purple-softer) 100%)",
       }}
-      aria-label="Your journey"
+      aria-label={trail.eyebrow}
     >
       <div className="relative z-[3] mb-10 md:mb-[60px] mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8">
-        <div className="eyebrow mb-4">Your journey</div>
+        <div className="eyebrow mb-4">{trail.eyebrow}</div>
         <h2 className="max-w-[720px]">
-          Wherever you are on the trail,{" "}
-          <span className="text-purple-deep">we&apos;ll meet you there.</span>
+          {trail.titleA}{" "}
+          <span className="text-purple-deep">{trail.titleEmphasis}</span>
         </h2>
         <p className="text-ink-muted max-w-[560px] mt-4 text-[1rem] md:text-[1.08rem]">
-          Most people don&apos;t arrive with a clear question. Here are three
-          common places to start — pick the one that fits today; you can always
-          change route.
+          {trail.lead}
         </p>
       </div>
 
@@ -401,7 +385,7 @@ export function HikingTrail() {
                         {cp.num}
                       </div>
                       <div className="eyebrow m-0" style={{ color: accent }}>
-                        Checkpoint {i + 1} of 3
+                        {trail.checkpointOf.replace("{n}", String(i + 1))}
                       </div>
                     </div>
                     <h3 className="mb-3 text-[1.42rem] leading-tight font-black">

@@ -2,22 +2,24 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { counselors } from "@/lib/data";
 import { PageHero } from "@/components/ui/PageHero";
 import { Photo } from "@/components/ui/Photo";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
+import { useI18n } from "@/lib/i18n/I18nProvider";
 
 function SelectField({
   label,
   value,
   onChange,
   options,
+  anyLabel,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   options: string[];
+  anyLabel: string;
 }) {
   return (
     <label className="flex flex-col gap-1.5 min-w-[140px] flex-1 sm:flex-none">
@@ -35,7 +37,7 @@ function SelectField({
           backgroundPosition: "right 14px center",
         }}
       >
-        <option value="all">Any</option>
+        <option value="all">{anyLabel}</option>
         {options.map((o) => (
           <option key={o} value={o}>{o}</option>
         ))}
@@ -45,6 +47,10 @@ function SelectField({
 }
 
 export default function CoachesPage() {
+  const { t } = useI18n();
+  const p = t.coachesPage;
+  const counselors = t.data.counselors;
+
   const [search, setSearch] = useState("");
   const [canton, setCanton] = useState("all");
   const [specialty, setSpecialty] = useState("all");
@@ -54,15 +60,19 @@ export default function CoachesPage() {
 
   const allSpecialties = useMemo(
     () => [...new Set(counselors.flatMap((c) => c.specialties))].sort(),
-    [],
+    [counselors],
   );
   const allLanguages = useMemo(
     () => [...new Set(counselors.flatMap((c) => c.languages))].sort(),
-    [],
+    [counselors],
   );
   const allCantons = useMemo(
     () => [...new Set(counselors.map((c) => c.canton))].sort(),
-    [],
+    [counselors],
+  );
+  const allModes = useMemo(
+    () => [...new Set(counselors.flatMap((c) => c.modes))],
+    [counselors],
   );
 
   const filtered = counselors.filter((c) => {
@@ -76,7 +86,7 @@ export default function CoachesPage() {
     if (canton !== "all" && c.canton !== canton) return false;
     if (specialty !== "all" && !c.specialties.includes(specialty)) return false;
     if (language !== "all" && !c.languages.includes(language)) return false;
-    if (mode !== "all" && !c.modes.includes(mode as never)) return false;
+    if (mode !== "all" && !c.modes.includes(mode)) return false;
     if (acceptingOnly && !c.accepting) return false;
     return true;
   });
@@ -84,9 +94,9 @@ export default function CoachesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Coach directory"
-        title="Find a coach who understands how you work."
-        lead="All of our coaches are accredited through NSNS. Many are neurodivergent themselves. Filter by location, language, specialty and availability to find the right fit."
+        eyebrow={p.hero.eyebrow}
+        title={p.hero.title}
+        lead={p.hero.lead}
       />
 
       <section className="pt-0 pb-10 md:pb-14">
@@ -94,12 +104,12 @@ export default function CoachesPage() {
           <div className="bg-bg-raised border border-brand-border rounded-[var(--r-lg)] p-5 md:p-6 mb-6 md:mb-8">
             <div className="flex flex-wrap items-end gap-3 md:gap-4">
               <label className="flex w-full md:flex-1 md:min-w-[260px] flex-col gap-1.5">
-                <span className="text-[0.88rem] font-bold text-ink-muted">Search</span>
+                <span className="text-[0.88rem] font-bold text-ink-muted">{p.filters.search}</span>
                 <div className="relative">
                   <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Name, specialty, keyword…"
+                    placeholder={p.filters.searchPlaceholder}
                     className="w-full py-2.5 pl-10 pr-3.5 rounded-pill border border-brand-border-strong bg-bg-card text-[0.92rem]"
                   />
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted">
@@ -107,10 +117,10 @@ export default function CoachesPage() {
                   </span>
                 </div>
               </label>
-              <SelectField label="Canton" value={canton} onChange={setCanton} options={allCantons} />
-              <SelectField label="Specialty" value={specialty} onChange={setSpecialty} options={allSpecialties} />
-              <SelectField label="Language" value={language} onChange={setLanguage} options={allLanguages} />
-              <SelectField label="Format" value={mode} onChange={setMode} options={["In-person", "Online", "Hybrid"]} />
+              <SelectField label={p.filters.canton} value={canton} onChange={setCanton} options={allCantons} anyLabel={p.filters.any} />
+              <SelectField label={p.filters.specialty} value={specialty} onChange={setSpecialty} options={allSpecialties} anyLabel={p.filters.any} />
+              <SelectField label={p.filters.language} value={language} onChange={setLanguage} options={allLanguages} anyLabel={p.filters.any} />
+              <SelectField label={p.filters.format} value={mode} onChange={setMode} options={allModes} anyLabel={p.filters.any} />
               <label className="flex items-center gap-2 pb-1 cursor-pointer">
                 <input
                   type="checkbox"
@@ -118,13 +128,13 @@ export default function CoachesPage() {
                   onChange={(e) => setAcceptingOnly(e.target.checked)}
                   className="w-[18px] h-[18px] accent-[var(--teal)]"
                 />
-                <span className="text-[0.92rem] font-semibold">Accepting only</span>
+                <span className="text-[0.92rem] font-semibold">{p.filters.acceptingOnly}</span>
               </label>
             </div>
           </div>
 
           <div className="mb-6 text-ink-muted text-[0.95rem]">
-            Showing <strong className="text-ink">{filtered.length}</strong> of {counselors.length} coaches
+            {p.showingPrefix} <strong className="text-ink">{filtered.length}</strong> {p.showingMiddle} {counselors.length} {p.showingSuffix}
           </div>
 
           <div className="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -143,7 +153,7 @@ export default function CoachesPage() {
                       tone={c.accepting ? "teal" : "neutral"}
                       className="!text-[0.72rem] shrink-0"
                     >
-                      {c.accepting ? "● Accepting" : "Waitlist"}
+                      {c.accepting ? p.accepting : p.waitlist}
                     </Chip>
                   </div>
                   <div className="text-[0.92rem] text-ink-muted mb-3.5">{c.title}</div>
@@ -169,13 +179,13 @@ export default function CoachesPage() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20 px-6 text-ink-muted">
-              <div className="text-[1.2rem] mb-2">No coaches match those filters.</div>
+              <div className="text-[1.2rem] mb-2">{p.empty.title}</div>
               <div>
-                Try relaxing one of them, or{" "}
+                {p.empty.retry}{" "}
                 <Link href="/contact" className="text-teal underline">
-                  contact us
+                  {p.empty.contactUs}
                 </Link>{" "}
-                and we&apos;ll find something.
+                {p.empty.findSomething}
               </div>
             </div>
           )}

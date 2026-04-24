@@ -5,59 +5,20 @@ import { Blob } from "@/components/ui/Blob"
 import { Photo } from "@/components/ui/Photo"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Icon, type IconName } from "@/components/ui/Icon"
+import { useI18n } from "@/lib/i18n/I18nProvider"
 
 const amounts = [25, 50, 100, 250]
-
-const stories = [
-  {
-    tone: "teal" as const,
-    name: "For Mira",
-    give: "CHF 25",
-    impact: "covers one peer-mentoring session",
-    quote: "I'd been on a waiting list for a year. NSNS saw me in three weeks.",
-    src: "/assets/donate/peer-mentoring.jpg",
-    alt: "Two peer mentors in NSNS hoodies, smiling",
-  },
-  {
-    tone: "purple" as const,
-    name: "For Julien",
-    give: "CHF 100",
-    impact: "subsidises an assessment intake",
-    quote: "I walked out with a diagnosis and a way forward, not just a label.",
-    src: "/assets/donate/support-group.jpg",
-    alt: "Facilitated support group meeting in a sunlit room",
-  },
-  {
-    tone: "warm" as const,
-    name: "For the Lamberts",
-    give: "CHF 250",
-    impact: "funds a full sensory-safe Saturday",
-    quote:
-      "It's the only place in the city where our son can just be himself for a day.",
-    src: "/assets/donate/community-hands.jpg",
-    alt: "Diverse hands joined together in the centre of a group",
-  },
+const storyTones: ("teal" | "purple" | "warm")[] = ["teal", "purple", "warm"]
+const storySrcs = [
+  "/assets/donate/peer-mentoring.jpg",
+  "/assets/donate/support-group.jpg",
+  "/assets/donate/community-hands.jpg",
 ]
-
-const ways: { icon: IconName; t: string; b: string }[] = [
-  {
-    icon: "heart",
-    t: "Volunteer with us",
-    b: "We need help with events, translation and community moderation. A few hours a month is plenty.",
-  },
-  {
-    icon: "book",
-    t: "Leave a bequest",
-    b: "Legacy giving secures the network for the next generation of neurodivergent Swiss adults.",
-  },
-  {
-    icon: "globe",
-    t: "Partner from your company",
-    b: "Matched giving, pro-bono services, or sponsoring a specific programme — talk to us.",
-  },
-]
+const wayIcons: IconName[] = ["heart", "book", "globe"]
 
 export default function DonatePage() {
+  const { t } = useI18n()
+  const p = t.donatePage
   const [amount, setAmount] = useState(50)
   const [frequency, setFrequency] = useState<"monthly" | "once">("monthly")
 
@@ -68,27 +29,23 @@ export default function DonatePage() {
         <Blob style={{ bottom: -140, right: -140 }} color="var(--teal-soft)" />
         <div className="relative mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8 grid items-center gap-10 md:gap-[72px] md:grid-cols-[1.1fr_1fr]">
           <div>
-            <div className="eyebrow mb-5">Support the network</div>
+            <div className="eyebrow mb-5">{p.hero.eyebrow}</div>
             <h1 className="mb-5">
-              When you give to nsns, you give someone{" "}
+              {p.hero.titleA}{" "}
               <span className="relative whitespace-nowrap text-purple-deep">
-                their first yes
+                {p.hero.titleEmphasis}
                 <span className="absolute inset-x-0 -bottom-0.5 h-2.5 bg-teal-soft rounded -z-10" />
               </span>
               .
             </h1>
             <p className="text-[1rem] md:text-[1.15rem] text-ink-soft mb-6 md:mb-8 max-w-[560px]">
-              Your donation funds sliding-scale coaching, translated resources,
-              sensory-safe community events, and the assessments people cannot
-              otherwise afford. It is the difference between hearing
-              &ldquo;sorry, we can&apos;t&rdquo; and &ldquo;yes — come
-              in.&rdquo;
+              {p.hero.lead}
             </p>
           </div>
           <div>
             <Photo
               src="/assets/donate/warm-conversation.jpg"
-              label="Two NSNS community members laughing together in a bright, softly lit room"
+              label={p.hero.imageAlt}
               ratio="4/5"
               tint="purple"
               rounded="var(--r-xl)"
@@ -101,28 +58,30 @@ export default function DonatePage() {
       <section className="py-10 md:py-14">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8">
           <SectionHeader
-            eyebrow="Who your giving reaches"
-            title="Three stories we hold close."
+            eyebrow={p.storiesSection.eyebrow}
+            title={p.storiesSection.title}
           />
           <div className="grid gap-5 md:gap-6 md:grid-cols-3">
-            {stories.map((s, i) => {
+            {p.stories.map((s, i) => {
+              const tone = storyTones[i]
+              const src = storySrcs[i]
               const numberInk =
-                s.tone === "purple"
+                tone === "purple"
                   ? "var(--purple-deep)"
-                  : s.tone === "teal"
+                  : tone === "teal"
                   ? "var(--teal-deep)"
                   : "var(--ink)"
-              const rule = s.tone === "purple" ? "var(--purple)" : "var(--teal)"
+              const rule = tone === "purple" ? "var(--purple)" : "var(--teal)"
               return (
                 <article
                   key={i}
                   className="bg-bg-card border border-brand-border rounded-[var(--r-lg)] overflow-hidden"
                 >
                   <Photo
-                    src={s.src}
+                    src={src}
                     label={s.alt}
                     ratio="4/3"
-                    tint={s.tone}
+                    tint={tone}
                     rounded="0"
                   />
                   <div className="p-6 md:p-7">
@@ -152,7 +111,7 @@ export default function DonatePage() {
       {/* Donation form */}
       <section className="mx-3 md:mx-4 py-14 md:py-24 rounded-[28px] md:rounded-[48px] bg-bg-tint">
         <div className="mx-auto w-full max-w-[820px] px-5 sm:px-6 md:px-8">
-          <h2 className="mb-6 md:mb-8 text-center">Give now</h2>
+          <h2 className="mb-6 md:mb-8 text-center">{p.form.title}</h2>
 
           <div className="flex bg-bg-raised rounded-pill p-1.5 mb-6 max-w-[360px] mx-auto">
             {(["monthly", "once"] as const).map((f) => (
@@ -166,7 +125,7 @@ export default function DonatePage() {
                     : "text-ink-soft"
                 }`}
               >
-                {f === "monthly" ? "Monthly" : "One time"}
+                {f === "monthly" ? p.form.monthly : p.form.once}
               </button>
             ))}
           </div>
@@ -198,21 +157,17 @@ export default function DonatePage() {
           <div className="bg-bg-raised rounded-[var(--r)] p-5 mb-6 text-center text-ink-soft text-[0.98rem]">
             {frequency === "monthly" ? (
               <>
-                You&apos;ll give{" "}
+                {p.form.monthlyDesc.pre}{" "}
                 <strong className="text-purple-deep">CHF {amount} </strong>{" "}
-                every month. That&apos;s about{" "}
-                <strong>{Math.round(amount / 30)} coaching sessions</strong> a
-                year.
+                {p.form.monthlyDesc.middle}{" "}
+                <strong>{Math.round(amount / 30)}</strong> {p.form.monthlyDesc.suffix}
               </>
             ) : (
               <>
-                A one-time gift of{" "}
-                <strong className="text-purple-deep">CHF {amount}</strong> funds
-                roughly{" "}
-                <strong>
-                  {Math.round(amount / 25)} peer-mentoring sessions
-                </strong>
-                .
+                {p.form.onceDesc.pre}{" "}
+                <strong className="text-purple-deep">CHF {amount}</strong>{" "}
+                {p.form.onceDesc.middle}{" "}
+                <strong>{Math.round(amount / 25)}</strong> {p.form.onceDesc.suffix}
               </>
             )}
           </div>
@@ -221,7 +176,7 @@ export default function DonatePage() {
             type="button"
             className="group w-full inline-flex justify-center items-center gap-2 py-[18px] rounded-pill bg-purple-deep text-white font-bold text-[1.05rem] shadow-[0_2px_0_var(--purple-ink)] hover:bg-purple hover:-translate-y-px transition"
           >
-            Continue to secure payment
+            {p.form.continue}
             <span
               aria-hidden
               className="inline-block transition-transform group-hover:translate-x-[3px]"
@@ -230,8 +185,7 @@ export default function DonatePage() {
             </span>
           </button>
           <p className="text-center text-[0.85rem] text-ink-muted mt-4">
-            Donations are tax-deductible in Switzerland. NSNS is a registered
-            non-profit.
+            {p.form.taxNote}
           </p>
         </div>
       </section>
@@ -240,18 +194,18 @@ export default function DonatePage() {
       <section className="py-10 md:py-14">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8">
           <SectionHeader
-            eyebrow="Other ways to help"
-            title="Not everyone gives in francs — and that's fine."
+            eyebrow={p.otherWaysSection.eyebrow}
+            title={p.otherWaysSection.title}
             align="center"
           />
           <div className="grid gap-5 md:gap-6 md:grid-cols-3">
-            {ways.map((x) => (
+            {p.ways.map((x, i) => (
               <div
                 key={x.t}
                 className="bg-bg-card border border-brand-border rounded-[var(--r-lg)] text-center p-6 md:p-8"
               >
                 <div className="w-14 h-14 rounded-[16px] bg-teal-soft text-teal-deep inline-flex items-center justify-center mb-[18px]">
-                  <Icon name={x.icon} size={26} />
+                  <Icon name={wayIcons[i]} size={26} />
                 </div>
                 <h3 className="mb-2.5">{x.t}</h3>
                 <p className="text-ink-muted text-[0.96rem]">{x.b}</p>

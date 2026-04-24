@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { assessments, assessmentFaqs } from "@/lib/data"
 import { PageHero } from "@/components/ui/PageHero"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Icon } from "@/components/ui/Icon"
+import { useI18n } from "@/lib/i18n/I18nProvider"
 
 const tintBg: Record<string, string> = {
   teal: "var(--teal-soft)",
@@ -19,14 +19,18 @@ const tintInk: Record<string, string> = {
 }
 
 export default function AssessmentsPage() {
+  const { t } = useI18n()
+  const p = t.assessmentsPage
+  const assessments = t.data.assessments
+  const faqs = t.data.assessmentFaqs
   const [openFaq, setOpenFaq] = useState<number>(0)
 
   return (
     <>
       <PageHero
-        eyebrow="Assessments"
-        title="A thorough, adult-centred path to knowing yourself."
-        lead="Diagnosis in adulthood is a door, not a verdict. Our assessments are designed to be careful, paced, and respectful — by clinicians who understand late diagnosis from the inside."
+        eyebrow={p.hero.eyebrow}
+        title={p.hero.title}
+        lead={p.hero.lead}
         tint="purple"
       />
 
@@ -39,36 +43,15 @@ export default function AssessmentsPage() {
               background: "rgba(127, 0, 127, 0.1)",
             }}
           >
-            <div className="eyebrow mb-4 md:mb-5">How it works</div>
+            <div className="eyebrow mb-4 md:mb-5">{p.howItWorks.eyebrow}</div>
             <h2 className="mb-7 md:mb-10 max-w-[640px]">
-              Four steps. No rush.
+              {p.howItWorks.title}
             </h2>
             <div className="grid gap-6 md:gap-7 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                {
-                  n: "01",
-                  t: "Free 20-minute call",
-                  d: "We start by understanding why you're considering assessment, and whether it's the right moment. No obligation.",
-                },
-                {
-                  n: "02",
-                  t: "Intake & inventories",
-                  d: "A 90-minute interview plus self-report inventories you complete at home, at your own pace.",
-                },
-                {
-                  n: "03",
-                  t: "Structured assessment",
-                  d: "DIVA-5, ADOS-2, ADI-R or the relevant combination — delivered across 2–4 sessions, with breaks you control.",
-                },
-                {
-                  n: "04",
-                  t: "Feedback & report",
-                  d: "A written report and at least one hour of conversation about what it means. A second feedback session if you need it.",
-                },
-              ].map((s) => (
-                <div key={s.n}>
+              {p.howItWorks.steps.map((s, i) => (
+                <div key={i}>
                   <div className="text-3xl text-purple leading-none mb-2.5 font-black">
-                    {s.n}
+                    {String(i + 1).padStart(2, "0")}
                   </div>
                   <h4 className="mb-2">{s.t}</h4>
                   <p className="text-ink-muted text-[0.95rem]">{s.d}</p>
@@ -83,9 +66,9 @@ export default function AssessmentsPage() {
       <section className="py-14 md:py-24">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8">
           <SectionHeader
-            eyebrow="Pathways"
-            title="Three assessment options."
-            lead="All pathways include a feedback session and written report. Sliding-scale places are available on every pathway — please ask."
+            eyebrow={p.pathwaysSection.eyebrow}
+            title={p.pathwaysSection.title}
+            lead={p.pathwaysSection.lead}
           />
           <div className="grid gap-5 md:gap-6 md:grid-cols-3 items-stretch">
             {assessments.map((a) => (
@@ -112,7 +95,7 @@ export default function AssessmentsPage() {
                     {a.overview}
                   </p>
                   <div className="text-[0.9rem] font-bold text-ink-muted mb-3">
-                    Includes
+                    {p.pathwaysSection.includesLabel}
                   </div>
                   <ul className="list-none p-0 m-0 flex flex-col gap-2.5 flex-1">
                     {a.includes.map((item) => (
@@ -131,7 +114,7 @@ export default function AssessmentsPage() {
                     href="/contact"
                     className="mt-6 inline-flex items-center justify-center gap-2 px-[26px] py-[14px] rounded-pill bg-bg-card text-ink border-2 border-ink font-bold text-[1rem] hover:bg-ink hover:text-white transition"
                   >
-                    Enquire about {a.name.split(" ")[0]}
+                    {p.pathwaysSection.enquirePrefix} {a.name.split(" ")[0]}
                     <span aria-hidden>→</span>
                   </Link>
                 </div>
@@ -145,21 +128,14 @@ export default function AssessmentsPage() {
       <section className="mx-3 md:mx-4 py-10 md:py-16 bg-bg-tint">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-6 md:px-8 grid items-center gap-8 md:gap-16 md:grid-cols-[1fr_1.2fr]">
           <div>
-            <div className="eyebrow mb-4">On pricing</div>
-            <h2 className="mb-4">Why private assessments cost what they do.</h2>
+            <div className="eyebrow mb-4">{p.pricing.eyebrow}</div>
+            <h2 className="mb-4">{p.pricing.title}</h2>
             <p className="text-ink-muted text-[1rem] md:text-[1.05rem]">
-              A thorough adult assessment is 12 to 20 hours of clinical time
-              plus report writing. We are transparent about that — and we make
-              room for sliding-scale places on every pathway.
+              {p.pricing.body}
             </p>
           </div>
           <div className="grid gap-3 md:gap-4 grid-cols-2">
-            {[
-              { n: "12–20h", l: "Clinical time per assessment" },
-              { n: "2–4", l: "Sessions across several weeks" },
-              { n: "Sliding", l: "Scale places on every pathway" },
-              { n: "Insurance", l: "Partial coverage often possible" },
-            ].map((s, i) => (
+            {p.pricing.stats.map((s, i) => (
               <div
                 key={i}
                 className="p-4 md:p-6 bg-bg-raised rounded-[var(--r)]"
@@ -180,12 +156,12 @@ export default function AssessmentsPage() {
       <section className="py-14 md:py-24">
         <div className="mx-auto w-full max-w-[820px] px-5 sm:px-6 md:px-8">
           <SectionHeader
-            eyebrow="Common questions"
-            title="What people ask us most."
+            eyebrow={p.faqsSection.eyebrow}
+            title={p.faqsSection.title}
             align="center"
           />
           <div className="flex flex-col gap-2">
-            {assessmentFaqs.map((f, i) => (
+            {faqs.map((f, i) => (
               <div
                 key={i}
                 className="bg-bg-card border border-brand-border rounded-[var(--r)] overflow-hidden"

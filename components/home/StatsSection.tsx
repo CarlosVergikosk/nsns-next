@@ -1,6 +1,11 @@
-import { ndFacts } from "@/lib/data";
+"use client";
+
+import { useI18n } from "@/lib/i18n/I18nProvider";
 
 export function StatsSection() {
+  const { t } = useI18n();
+  const s = t.home.stats;
+  const ndFacts = t.data.ndFacts;
   return (
     <section className="relative bg-ink text-white py-14 md:py-24 overflow-hidden">
       <svg
@@ -22,14 +27,14 @@ export function StatsSection() {
             className="eyebrow mb-4 md:mb-5 justify-center"
             style={{ color: "var(--teal-soft)" }}
           >
-            Why this matters
+            {s.eyebrow}
           </div>
           <h2 className="text-white text-[clamp(1.9rem,5.5vw,3.4rem)] leading-[1.1] mb-5 md:mb-6">
-            The numbers behind{" "}
-            <span style={{ color: "var(--teal-soft)" }}>the quiet wait.</span>
+            {s.titleA}{" "}
+            <span style={{ color: "var(--teal-soft)" }}>{s.titleEmphasis}</span>
           </h2>
           <p className="text-white/75 text-[1rem] md:text-[1.15rem] leading-[1.7] mx-auto max-w-[640px]">
-            Neurodivergent adults in Switzerland wait years for answers — and when the answers arrive, the real support often isn&apos;t there. We built NSNS to shrink both gaps at once.
+            {s.lead}
           </p>
         </div>
 
@@ -67,7 +72,7 @@ export function StatsSection() {
         </div>
 
         <p className="mt-8 md:mt-10 text-[0.82rem] md:text-[0.84rem] text-white/50 max-w-[720px]">
-          Sources: Swiss Federal Statistical Office, European ADHD Guidelines Group, ADHD Europe (2023), and internal NSNS network surveys 2023–2024.
+          {s.sources}
         </p>
       </div>
     </section>
