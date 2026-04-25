@@ -408,6 +408,81 @@ const positiveMessages: string[] = [
   "La diagnosi è una porta, non un verdetto.",
 ];
 
+const webinars = [
+  {
+    id: "ouZrZa5pLXk",
+    startAt: 457,
+    title: "Cos'è l'ADHD? Un'introduzione chiara, senza gergo",
+    description:
+      "Un'esposizione accessibile su cosa sia davvero l'ADHD, come si differenzia dagli stereotipi e perché appare così diverso in base all'età, al genere e al contesto. Un buon punto di partenza per chi è alle prime curiosità.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "lsyVwDh99rQ",
+    startAt: 0,
+    title: "AuDHD spiegato: si può avere ADHD e autismo insieme?",
+    description:
+      "Gli esperti analizzano la sovrapposizione tra ADHD e autismo — perché le due condizioni erano a lungo considerate incompatibili, come si presenta davvero la co-occorrenza e come affrontare il supporto quando entrambe sono presenti.",
+    duration: "11 min",
+    speaker: "Understood",
+    category: "AuDHD",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "nxq5eA7quxw",
+    startAt: 0,
+    title: "Perché il rifiuto fa così male con l'ADHD — la RSD spiegata",
+    description:
+      "Una psicoterapeuta spiega la Disregolazione Emotiva da Sensibilità al Rifiuto: cos'è, perché colpisce così duramente, come plasma le relazioni e l'autostima, e cosa aiuta davvero. Uno degli aspetti più sottovalutati dell'ADHD.",
+    duration: "8 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "t2vpxXQfPFY",
+    startAt: 0,
+    title: "ADHD e stress: cosa succede — e cosa aiuta",
+    description:
+      "Una psicoterapeuta spiega perché ADHD e stress cronico sono così spesso intrecciati — le ragioni neurologiche per cui lo stress è più difficile da regolare, e gli approcci che fanno davvero la differenza.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "c4a47wBV_Cc",
+    startAt: 0,
+    title: "I grandi miti sull'educazione speciale — smontati",
+    description:
+      "Un'insegnante di sostegno affronta i miti più ostinati sulle differenze di apprendimento, i piani individualizzati e cosa significhi davvero «supporto». Imprescindibile per genitori, insegnanti e chiunque abbia sentito cose sbagliate su di sé.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "Educazione",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "L7YJGecsf-s",
+    startAt: 0,
+    title: "Le sfide più grandi dell'ADHD in età adulta — il punto di vista di uno psicologo",
+    description:
+      "Uno psicologo percorre i modi specifici in cui l'ADHD si manifesta nella vita adulta — relazioni, lavoro, identità e la stanchezza particolare di anni senza diagnosi. Pratico e validante in egual misura.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "ADHD adulto",
+    isFree: false,
+    price: "CHF 15",
+  },
+]
+
 const ndFacts: NdFact[] = [
   { stat: "~15–20%", label: "delle persone si stima siano neurodivergenti in qualche forma" },
   { stat: "5–8 anni", label: "ritardo medio tra la prima richiesta di aiuto e la diagnosi in età adulta" },
@@ -431,6 +506,7 @@ export const it: Dictionary = {
     coachDirectory: "Elenco dei coach",
     assessments: "Valutazioni",
     aboutNd: "Sulla neurodivergenza",
+    webinars: "Webinar",
     blog: "Blog & Eventi",
     contact: "Contatto",
     donate: "Dona",
@@ -585,6 +661,17 @@ export const it: Dictionary = {
       title: "Alcuni schemi comuni.",
       lead: "Ogni persona neurodivergente è unica. Ma ecco uno schizzo grezzo delle esperienze più comuni su cui lavoriamo.",
       strengthsLabel: "Forze associate",
+      learnMore: "Scopri di più",
+      closeLabel: "Chiudi",
+      aboutTitle: "Che cos'è davvero",
+      factsTitle: "Alcuni fatti utili",
+      tipsTitle: "Cosa tende ad aiutare",
+      referencesTitle: "Per approfondire",
+      modalCta: {
+        title: "Vuoi parlare con qualcuno che capisce?",
+        body: "Che tu sia appena curioso·a, in attesa di una valutazione, o stia sostenendo una persona cara — saremo felici di sentirti. Una prima conversazione è gratuita, senza fretta e senza impegno.",
+        button: "Mettiti in contatto",
+      },
     },
     profiles: [
       {
@@ -592,24 +679,156 @@ export const it: Dictionary = {
         tags: ["Attenzione", "Funzioni esecutive", "Iperfocus"],
         body: "Una differenza in come funzionano attenzione, motivazione e funzioni esecutive — spesso con cecità temporale, sete di novità e capacità di profondo iperfocus sulla cosa giusta.",
         strengths: ["Intuizioni creative", "Reazione nelle crisi", "Lavoro profondo su interessi forti"],
+        imageLabel: "Segnaposto immagine — scintille di attività attorno a un cervello",
+        summary:
+          "L'ADHD è una differenza nel modo in cui il cervello regola attenzione, motivazione e tempo — non una mancanza di volontà o intelligenza.",
+        about: [
+          "L'ADHD (Disturbo da Deficit di Attenzione/Iperattività) è una differenza neurosviluppale riconosciuta lungo tutto l'arco della vita. Si manifesta nel modo in cui l'attenzione viene allocata, in come si genera la motivazione e in come si sentono il tempo e lo sforzo — non nell'intelligenza o nelle capacità.",
+          "La ricerca indica una forte componente genetica, con un'ereditabilità stimata intorno al 74%, e differenze nella segnalazione di dopamina e noradrenalina che modellano ricompensa e autoregolazione. L'ADHD è uno degli argomenti più studiati in psichiatria: è reale, persiste in età adulta e risponde bene a una combinazione di adattamenti, competenze e, dove utile, terapia farmacologica.",
+        ],
+        facts: [
+          "L'ADHD interessa circa il 5% dei bambini e il 2,5% degli adulti nel mondo (Faraone et al., 2021).",
+          "Le diagnosi tardive sono comuni — soprattutto per donne, ragazze e persone che hanno imparato a mascherare i tratti.",
+          "Iperfocus, pensiero divergente e rapida soluzione di problemi nuovi sono punti di forza spesso riportati.",
+          "Le co-occorrenze — ansia, dislessia, autismo, differenze del sonno — sono comuni e sostenere l'ADHD spesso le allevia.",
+        ],
+        tips: [
+          "Le impalcature esterne — sveglie, liste, body-doubling, timer visibili — battono la forza di volontà ogni volta.",
+          "Allinea l'ambiente ai tuoi interessi; novità e posta in gioco sono il modo in cui il cervello ADHD si accende.",
+          "Sonno, movimento e pasti ricchi di proteine spostano la concentrazione di base più della maggior parte delle app.",
+          "Coaching o terapia mirati alle funzioni esecutive si sommano bene a un trattamento medico.",
+        ],
+        references: [
+          {
+            label: "Faraone et al. (2021) — World Federation of ADHD International Consensus Statement",
+            url: "https://doi.org/10.1016/j.neubiorev.2021.01.022",
+          },
+          {
+            label: "NIMH — Attention-Deficit/Hyperactivity Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+          },
+          {
+            label: "CDC — About ADHD",
+            url: "https://www.cdc.gov/adhd/",
+          },
+        ],
       },
       {
         name: "Autismo",
         tags: ["Sensoriale", "Pattern", "Schiettezza"],
         body: "Una differenza nel trattamento dell'input sensoriale e della comunicazione sociale. Spesso associata a riconoscimento di pattern, profonda competenza e forte senso di equità.",
         strengths: ["Riconoscimento di pattern", "Profondità tematica", "Onestà & integrità"],
+        imageLabel: "Segnaposto immagine — pattern geometrici interconnessi",
+        summary:
+          "L'autismo è un modo diverso di percepire, elaborare e mettersi in relazione con il mondo — una differenza, non un deficit.",
+        about: [
+          "L'autismo è una differenza neurosviluppale che dura tutta la vita, caratterizzata da modi distinti di elaborare le informazioni sensoriali, comunicare e impegnarsi in interessi profondi. Esiste su uno spettro: due persone autistiche non sono uguali, e le abilità possono variare molto tra ambiti e tra giornate.",
+          "L'autismo ha radici genetiche e di sviluppo solide e viene identificato in circa 1 persona su 100 nel mondo, con tassi maggiori nei Paesi che effettuano screening attivi. Molti adulti — soprattutto donne, persone non binarie e persone razzializzate — vengono identificati tardi, dopo anni di mascheramento. Una crescente letteratura sostiene un approccio affermativo della neurodiversità, focalizzato sui punti di forza, al posto dei vecchi modelli centrati sui deficit.",
+        ],
+        facts: [
+          "Circa 1 persona su 100 è autistica nel mondo (Zeidan et al., 2022 — meta-analisi su Autism Research).",
+          "Le persone autistiche mostrano spesso un eccezionale riconoscimento di pattern, attenzione al dettaglio e profondità di competenza.",
+          "Le differenze sensoriali sono centrali, non periferiche — accomodarle in genere agevola tutto il resto (Robertson & Baron-Cohen, 2017).",
+          "La comunicazione autistica è diretta e precisa; i fraintendimenti tra persone autistiche e non autistiche vanno in entrambe le direzioni (Crompton et al., 2020 — problema della doppia empatia).",
+        ],
+        tips: [
+          "Tratta i bisogni sensoriali come dati, non come preferenze — regola luci, suoni, tessuti e ritmi prima di tutto.",
+          "Costruisci prevedibilità dove puoi; la sorpresa costa più del lavoro.",
+          "Onora gli interessi speciali come ristoratori — sono il modo in cui l'energia si ricarica, non si evita.",
+          "Trova comunità guidate da persone autistiche; l'esperienza vissuta supera spesso il consiglio clinico nella vita quotidiana.",
+        ],
+        references: [
+          {
+            label: "Zeidan et al. (2022) — Prevalenza globale dell'autismo: meta-analisi",
+            url: "https://doi.org/10.1002/aur.2696",
+          },
+          {
+            label: "Crompton et al. (2020) — Autistic peer-to-peer information transfer is highly effective",
+            url: "https://doi.org/10.1177/1362361320919286",
+          },
+          {
+            label: "NIMH — Autism Spectrum Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd",
+          },
+        ],
       },
       {
         name: "Dislessia",
         tags: ["Lettura", "Visuo-spaziale"],
         body: "Una differenza nel trattamento del linguaggio scritto. Spesso accompagnata da un forte pensiero visuo-spaziale e da un ragionamento narrativo.",
         strengths: ["Pensiero d'insieme", "Narrazione", "Ragionamento 3D"],
+        imageLabel: "Segnaposto immagine — lettere e forme che scorrono in una storia",
+        summary:
+          "La dislessia è una differenza nel modo in cui viene elaborato il linguaggio scritto — spesso accompagnata da un forte pensiero visivo, narrativo e d'insieme.",
+        about: [
+          "La dislessia è la differenza specifica di apprendimento più comune, e interessa circa il 5–10% della popolazione. Riguarda come il cervello associa suoni e lettere e la velocità di recupero delle parole familiari — non ha nulla a che vedere con intelligenza o impegno.",
+          "Decenni di ricerca con neuroimmagini mostrano differenze misurabili nelle reti di lettura dell'emisfero sinistro, ben descritte nei lavori di Sally e Bennett Shaywitz a Yale. La buona notizia: con i metodi giusti (alfabetizzazione strutturata / mappatura ortografica) e gli strumenti per adulti (sintesi vocale, dettatura, supporto ortografico), lettori e scrittori dislessici possono prosperare pienamente.",
+        ],
+        facts: [
+          "Circa il 5–10% delle persone è dislessico; ricorre fortemente in famiglia (International Dyslexia Association).",
+          "Differenza di lettura non significa differenza di intelligenza — QI e abilità di lettura sono in larga parte indipendenti (Ferrer et al., 2010).",
+          "I pensatori dislessici sono sovrarappresentati nell'imprenditoria, nel design, nell'ingegneria e nelle arti.",
+          "Le tecnologie assistive moderne — sintesi vocale, dettatura, correttori intelligenti — hanno cambiato la vita quotidiana con la dislessia.",
+        ],
+        tips: [
+          "Usa l'audio in parallelo al testo per tutto ciò che è importante — la comprensione sale, la fatica scende.",
+          "Detta le prime stesure; modifica dopo. Separare composizione e ortografia è un vero guadagno di produttività.",
+          "Caratteri sans-serif, interlinee generose e sfondi non bianchi riducono lo stress visivo per molte persone.",
+          "Nomina la dislessia al lavoro — sblocca adattamenti e fa delle particolarità la differenza che sono.",
+        ],
+        references: [
+          {
+            label: "International Dyslexia Association — Definition of Dyslexia",
+            url: "https://dyslexiaida.org/definition-of-dyslexia/",
+          },
+          {
+            label: "Ferrer et al. (2010) — Uncoupling of reading and IQ over time",
+            url: "https://doi.org/10.1177/0956797609354084",
+          },
+          {
+            label: "Yale Center for Dyslexia & Creativity",
+            url: "https://dyslexia.yale.edu/",
+          },
+        ],
       },
       {
         name: "AuDHD & co-occorrenza",
         tags: ["Combinato", "Comune"],
         body: "Molte persone neurodivergenti sono più di una cosa. La combinazione spesso appare diversa da ciascuna presa a sé — e beneficia di uno sguardo d'insieme.",
         strengths: ["Prospettiva unica", "Creatività tra domini"],
+        imageLabel: "Segnaposto immagine — cerchi sovrapposti in colori caldi",
+        summary:
+          "La maggior parte delle persone neurodivergenti è più di una cosa alla volta. AuDHD e altre co-occorrenze meritano di essere lette come un insieme, non come un tiro alla fune.",
+        about: [
+          "AuDHD descrive la co-occorrenza di autismo e ADHD nella stessa persona — una combinazione che fino a poco tempo fa era considerata impossibile dai manuali diagnostici. Il DSM-5 (2013) ha finalmente permesso entrambe le diagnosi insieme, e la ricerca da allora conferma: è più comune che rara.",
+          "Vivere entrambe contemporaneamente assomiglia spesso a una tensione interna tra novità e routine, tra sovraccarico sensoriale e ricerca di stimoli. Molte persone descrivono lunghe fasi in cui si sentono 'troppo di una cosa per l'altra comunità'. Guardare l'intero profilo — invece di ciascuna etichetta in isolamento — rende il sostegno molto più utile.",
+        ],
+        facts: [
+          "Tra il 50 e il 70% delle persone autistiche soddisfa anche i criteri per ADHD; circa il 30–50% delle persone con ADHD mostra tratti autistici clinicamente significativi (Hours et al., 2022).",
+          "La co-occorrenza è la regola, non l'eccezione — ansia, dislessia, disprassia, discalculia e Tourette si raggruppano spesso.",
+          "I profili combinati sono associati a creatività trans-disciplinare, chiarezza etica e angolazioni inusuali nel risolvere i problemi.",
+          "Trattamenti che ignorano un lato sotto-rendono; un sostegno integrato e centrato sulla persona supera i percorsi paralleli.",
+        ],
+        tips: [
+          "Mappa il tuo profilo per intero — le parti interagiscono, e dovrebbe farlo anche il sostegno.",
+          "Costruisci routine abbastanza flessibili per la novità; struttura con vie di fuga batte gli estremi.",
+          "Traccia l'energia sull'arco della settimana, non solo del giorno — il recupero fa parte del lavoro.",
+          "Cerca clinici e coach che tengano insieme l'intero quadro; le cure frammentate sono sfiancanti e raramente arrivano al punto.",
+        ],
+        references: [
+          {
+            label: "Hours, Recasens & Baleyte (2022) — ASD and ADHD comorbidity: review",
+            url: "https://doi.org/10.3389/fpsyt.2022.837424",
+          },
+          {
+            label: "Antshel & Russo (2019) — ASD and ADHD: overlapping phenomenology",
+            url: "https://doi.org/10.1007/s11920-019-1020-5",
+          },
+          {
+            label: "American Psychiatric Association — DSM-5 (2013) on co-occurrence",
+            url: "https://www.psychiatry.org/psychiatrists/practice/dsm",
+          },
+        ],
       },
     ],
     positiveSection: {
@@ -687,6 +906,45 @@ export const it: Dictionary = {
       editorialAltPrefix: "Foto editoriale —",
     },
     dateLocale: "it-CH",
+  },
+  webinarsPage: {
+    hero: {
+      eyebrow: "Webinar",
+      title: "Guarda, impara, e portalo nella tua vita.",
+      lead: "Sessioni registrate da clinici e coach della nostra rete — su attenzione, regolazione sensoriale, diagnosi tardiva e le domande pratiche che la comunità continua a porci.",
+    },
+    filters: {
+      all: "Tutti",
+      free: "Gratuiti",
+      paid: "A pagamento",
+    },
+    freeBadge: "Gratuito",
+    paidBadge: "Sostenitore",
+    watchLabel: "Guarda ora",
+    unlockLabel: "Sblocca",
+    closeLabel: "Chiudi",
+    durationLabel: "Durata",
+    speakerLabel: "Relatore/Relatrice",
+    lock: {
+      eyebrow: "Webinar per sostenitori",
+      title: "Sblocca questo webinar con una donazione.",
+      body: "Mettiamo le nostre sessioni approfondite a disposizione di chi sostiene NSNS. Una donazione di {amount} sblocca questo webinar e ci aiuta a portare avanti coaching, mentorship tra pari e programmi di comunità.",
+      donateButton: "Dona {amount} per sbloccare",
+      maybeLater: "Forse più tardi",
+      note: "Dopo la tua donazione ti invieremo via email un link privato per la visione.",
+    },
+    showingPrefix: "Mostro",
+    showingMiddle: "di",
+    showingSuffix: "webinar",
+    empty: {
+      title: "Nessun webinar corrisponde a questo filtro.",
+      retry: "Prova il filtro «Tutti» per vedere tutto ciò che abbiamo registrato.",
+    },
+    cta: {
+      title: "Un tema da affrontare?",
+      body: "Registriamo nuove sessioni ogni mese in base a ciò che la comunità chiede. Proponici un tema o unisciti come ospite.",
+      button: "Mettiti in contatto",
+    },
   },
   coachesPage: {
     hero: {
@@ -840,5 +1098,6 @@ export const it: Dictionary = {
     assessmentFaqs,
     positiveMessages,
     ndFacts,
+    webinars,
   },
 };

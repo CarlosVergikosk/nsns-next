@@ -41,6 +41,7 @@ export function Nav() {
       ],
     },
     { id: "about-nd", label: t.nav.aboutNd, href: "/about-neurodiversity" },
+    { id: "webinars", label: t.nav.webinars, href: "/webinars" },
     { id: "blog", label: t.nav.blog, href: "/blog" },
     { id: "contact", label: t.nav.contact, href: "/contact" },
   ]

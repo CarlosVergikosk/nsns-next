@@ -408,6 +408,81 @@ const positiveMessages: string[] = [
   "Le diagnostic est une porte, pas un verdict.",
 ];
 
+const webinars = [
+  {
+    id: "ouZrZa5pLXk",
+    startAt: 457,
+    title: "C'est quoi le TDAH ? Une introduction claire, sans jargon",
+    description:
+      "Un explainer accessible sur ce qu'est vraiment le TDAH, comment il diffère des stéréotypes et pourquoi il se présente si différemment selon l'âge, le genre et le contexte. Un bon point de départ si tu es nouvellement curieux·se.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "TDAH",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "lsyVwDh99rQ",
+    startAt: 0,
+    title: "AuDHD expliqué : peut-on avoir le TDAH et l'autisme en même temps ?",
+    description:
+      "Des experts décryptent le chevauchement entre TDAH et autisme — pourquoi les deux étaient longtemps considérés comme mutuellement exclusifs, ce qu'est vraiment la co-occurrence et comment aborder le soutien quand les deux sont présents.",
+    duration: "11 min",
+    speaker: "Understood",
+    category: "AuDHD",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "nxq5eA7quxw",
+    startAt: 0,
+    title: "Pourquoi le rejet fait si mal avec le TDAH — la SDR expliquée",
+    description:
+      "Une psychothérapeute explique la Dysrégulation Émotionnelle de Sensibilité au Rejet : ce que c'est, pourquoi ça touche si fort, comment ça façonne les relations et l'estime de soi, et ce qui aide vraiment.",
+    duration: "8 min",
+    speaker: "Understood",
+    category: "TDAH",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "t2vpxXQfPFY",
+    startAt: 0,
+    title: "TDAH et stress : ce qui se passe — et ce qui aide",
+    description:
+      "Une psychothérapeute explique pourquoi TDAH et stress chronique sont si souvent emmêlés — les raisons neurologiques qui rendent le stress plus difficile à réguler, et les approches qui font vraiment une différence.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "TDAH",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "c4a47wBV_Cc",
+    startAt: 0,
+    title: "Les grands mythes sur l'éducation spécialisée — déconstruits",
+    description:
+      "Une enseignante spécialisée s'attaque aux mythes les plus tenaces sur les différences d'apprentissage, les plans individualisés et ce que «soutien» veut vraiment dire. À voir pour les parents, les enseignant·es et quiconque a entendu de mauvaises choses sur soi-même.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "Éducation",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "L7YJGecsf-s",
+    startAt: 0,
+    title: "Les plus grands défis du TDAH à l'âge adulte — le point de vue d'un psychologue",
+    description:
+      "Un psychologue parcourt les manières spécifiques dont le TDAH se manifeste dans la vie adulte — relations, travail, identité et l'épuisement particulier d'années sans diagnostic. Pratique et validant à parts égales.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "TDAH adulte",
+    isFree: false,
+    price: "CHF 15",
+  },
+]
+
 const ndFacts: NdFact[] = [
   { stat: "~15–20 %", label: "des personnes sont estimées neurodivergentes d'une manière ou d'une autre" },
   { stat: "5–8 ans", label: "délai moyen entre la première demande d'aide et le diagnostic à l'âge adulte" },
@@ -431,6 +506,7 @@ export const fr: Dictionary = {
     coachDirectory: "Répertoire des coachs",
     assessments: "Évaluations",
     aboutNd: "À propos de la neurodivergence",
+    webinars: "Webinaires",
     blog: "Blog & Événements",
     contact: "Contact",
     donate: "Faire un don",
@@ -585,6 +661,17 @@ export const fr: Dictionary = {
       title: "Quelques motifs courants.",
       lead: "Chaque personne neurodivergente est unique. Mais voici une esquisse des expériences les plus courantes sur lesquelles nous travaillons.",
       strengthsLabel: "Forces associées",
+      learnMore: "En savoir plus",
+      closeLabel: "Fermer",
+      aboutTitle: "Ce que c'est vraiment",
+      factsTitle: "Quelques faits utiles",
+      tipsTitle: "Ce qui aide souvent",
+      referencesTitle: "Pour aller plus loin",
+      modalCta: {
+        title: "Envie de parler à quelqu'un qui comprend?",
+        body: "Que tu sois nouvellement curieux·se, en attente d'un bilan, ou en train de soutenir un·e proche — nous serons heureux d'avoir de tes nouvelles. Une première conversation est gratuite, sans pression et sans engagement.",
+        button: "Nous contacter",
+      },
     },
     profiles: [
       {
@@ -592,24 +679,156 @@ export const fr: Dictionary = {
         tags: ["Attention", "Fonctions exécutives", "Hyperfocalisation"],
         body: "Une différence dans le fonctionnement de l'attention, de la motivation et des fonctions exécutives — souvent avec cécité temporelle, soif de nouveauté et capacité d'hyperfocalisation profonde sur ce qui t'intéresse.",
         strengths: ["Élans créatifs", "Réaction en crise", "Travail profond à fort intérêt"],
+        imageLabel: "Espace réservé pour image — étincelles d'activité autour d'un cerveau",
+        summary:
+          "Le TDAH est une différence dans la façon dont le cerveau régule l'attention, la motivation et le temps — pas un manque de volonté ni d'intelligence.",
+        about: [
+          "Le TDAH (Trouble du Déficit de l'Attention avec ou sans Hyperactivité) est une différence neurodéveloppementale reconnue tout au long de la vie. Il se manifeste dans la façon dont l'attention est allouée, dont la motivation se construit, et dont le temps et l'effort sont vécus — pas dans l'intelligence ni les capacités.",
+          "La recherche pointe une forte composante génétique, avec une héritabilité estimée autour de 74%, et des différences dans la signalisation dopaminergique et noradrénergique qui modèlent récompense et autorégulation. Le TDAH est l'un des sujets les plus étudiés en psychiatrie, et le consensus est clair : il est réel, persiste à l'âge adulte, et répond bien à une combinaison d'aménagements, de compétences et, si utile, de traitement médical.",
+        ],
+        facts: [
+          "Le TDAH touche environ 5% des enfants et 2,5% des adultes dans le monde (Faraone et al., 2021).",
+          "Le diagnostic tardif est fréquent — particulièrement pour les femmes, les filles et les personnes ayant appris à masquer.",
+          "L'hyperfocalisation, la pensée divergente et la résolution rapide de problèmes nouveaux sont des forces souvent rapportées.",
+          "Les co-occurrences — anxiété, dyslexie, autisme, troubles du sommeil — sont fréquentes, et soutenir le TDAH les apaise souvent.",
+        ],
+        tips: [
+          "Les structures externes — alarmes, listes, body-doubling, minuteurs visibles — battent la volonté à tous les coups.",
+          "Aligne ton environnement à tes intérêts ; nouveauté et enjeux sont la manière dont le cerveau TDAH s'allume.",
+          "Sommeil, mouvement et repas riches en protéines déplacent la concentration de base plus que la plupart des applis.",
+          "Le coaching ou la thérapie axés sur les fonctions exécutives composent bien avec un traitement médical.",
+        ],
+        references: [
+          {
+            label: "Faraone et al. (2021) — World Federation of ADHD International Consensus Statement",
+            url: "https://doi.org/10.1016/j.neubiorev.2021.01.022",
+          },
+          {
+            label: "NIMH — Attention-Deficit/Hyperactivity Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+          },
+          {
+            label: "CDC — About ADHD",
+            url: "https://www.cdc.gov/adhd/",
+          },
+        ],
       },
       {
         name: "Autisme",
         tags: ["Sensoriel", "Motifs", "Franchise"],
         body: "Une différence dans le traitement des entrées sensorielles et de la communication sociale. Souvent associée à la reconnaissance de motifs, une expertise profonde et un fort sens de l'équité.",
         strengths: ["Reconnaissance de motifs", "Profondeur d'expertise", "Honnêteté & intégrité"],
+        imageLabel: "Espace réservé pour image — motifs géométriques interconnectés",
+        summary:
+          "L'autisme est une autre manière de percevoir, traiter et entrer en relation avec le monde — une différence, pas un déficit.",
+        about: [
+          "L'autisme est une différence neurodéveloppementale durant toute la vie, caractérisée par des manières distinctes de traiter les informations sensorielles, de communiquer et de s'engager dans des intérêts profonds. Il existe sur un spectre : pas deux personnes autistes ne sont pareilles, et les capacités peuvent varier fortement d'un domaine à l'autre, et d'un jour à l'autre.",
+          "L'autisme a des racines génétiques et développementales fortes ; il est identifié chez environ 1 personne sur 100 dans le monde, avec des taux plus élevés dans les pays qui dépistent activement. Beaucoup d'adultes — surtout les femmes, les personnes non-binaires et les personnes racisées — sont identifiés tardivement, après des années de masquage. Une recherche croissante soutient une approche affirmative de la neurodiversité, axée sur les forces, plutôt que les anciens modèles centrés sur le déficit.",
+        ],
+        facts: [
+          "Environ 1 personne sur 100 est autiste dans le monde (Zeidan et al., 2022 — méta-analyse, Autism Research).",
+          "Les personnes autistes montrent souvent une reconnaissance de motifs, une attention au détail et une profondeur d'expertise remarquables.",
+          "Les différences sensorielles sont centrales, pas périphériques — les accommoder facilite généralement le reste (Robertson & Baron-Cohen, 2017).",
+          "La communication autiste est directe et précise ; les malentendus entre autistes et non-autistes vont dans les deux sens (Crompton et al., 2020 — problème de double empathie).",
+        ],
+        tips: [
+          "Traite les besoins sensoriels comme des données, pas des préférences — ajuste lumière, son, tissu et rythme avant tout.",
+          "Construis de la prévisibilité quand tu peux ; la surprise coûte plus cher que le travail.",
+          "Honore les intérêts profonds comme ressourçants — c'est ainsi que l'énergie se reconstitue, pas qu'elle s'évite.",
+          "Trouve des communautés pilotées par des personnes autistes ; l'expérience vécue dépasse souvent l'avis clinique au quotidien.",
+        ],
+        references: [
+          {
+            label: "Zeidan et al. (2022) — Prévalence mondiale de l'autisme : méta-analyse",
+            url: "https://doi.org/10.1002/aur.2696",
+          },
+          {
+            label: "Crompton et al. (2020) — Autistic peer-to-peer information transfer is highly effective",
+            url: "https://doi.org/10.1177/1362361320919286",
+          },
+          {
+            label: "NIMH — Autism Spectrum Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd",
+          },
+        ],
       },
       {
         name: "Dyslexie",
         tags: ["Lecture", "Visuo-spatial"],
         body: "Une différence dans le traitement du langage écrit. Souvent accompagnée d'une forte pensée visuo-spatiale et d'un raisonnement narratif.",
         strengths: ["Pensée globale", "Narration", "Raisonnement 3D"],
+        imageLabel: "Espace réservé pour image — lettres et formes coulant en histoire",
+        summary:
+          "La dyslexie est une différence dans le traitement du langage écrit — souvent accompagnée d'une pensée visuelle, narrative et globale forte.",
+        about: [
+          "La dyslexie est la différence d'apprentissage spécifique la plus répandue, touchant environ 5 à 10% de la population. Elle concerne la façon dont le cerveau associe sons et lettres et la rapidité de récupération des mots familiers — elle n'a rien à voir avec l'intelligence ni l'effort.",
+          "Des décennies de neuro-imagerie révèlent des différences mesurables dans les réseaux de lecture de l'hémisphère gauche, bien décrites dans les travaux de Sally et Bennett Shaywitz à Yale. La bonne nouvelle : avec les bonnes méthodes (literacy structurée / mappage orthographique) et les outils pour adulte (synthèse vocale, dictée, correcteurs intelligents), les lecteurs et rédacteurs dyslexiques peuvent pleinement s'épanouir.",
+        ],
+        facts: [
+          "Environ 5 à 10% des personnes sont dyslexiques ; cela court fortement dans les familles (International Dyslexia Association).",
+          "Différence de lecture ne signifie pas différence d'intelligence — QI et capacité de lecture sont largement indépendants (Ferrer et al., 2010).",
+          "Les penseurs dyslexiques sont surreprésentés dans l'entrepreneuriat, le design, l'ingénierie et les arts.",
+          "La technologie d'assistance moderne — synthèse vocale, dictée, correcteurs intelligents — a transformé le quotidien dyslexique.",
+        ],
+        tips: [
+          "Utilise l'audio en parallèle du texte pour les contenus importants — la compréhension monte, la fatigue baisse.",
+          "Dicte les premières versions ; édite ensuite. Séparer composition et orthographe est un vrai gain de productivité.",
+          "Polices sans serif, interlignage généreux et fonds gris-blancs réduisent le stress visuel pour beaucoup.",
+          "Nomme la dyslexie au travail — cela débloque des aménagements et fait des particularités la différence qu'elles sont.",
+        ],
+        references: [
+          {
+            label: "International Dyslexia Association — Definition of Dyslexia",
+            url: "https://dyslexiaida.org/definition-of-dyslexia/",
+          },
+          {
+            label: "Ferrer et al. (2010) — Uncoupling of reading and IQ over time",
+            url: "https://doi.org/10.1177/0956797609354084",
+          },
+          {
+            label: "Yale Center for Dyslexia & Creativity",
+            url: "https://dyslexia.yale.edu/",
+          },
+        ],
       },
       {
         name: "AuDHD & co-occurrence",
         tags: ["Combiné", "Courant"],
         body: "De nombreuses personnes neurodivergentes sont plus d'une chose à la fois. La combinaison a souvent un visage différent de chacune prise à part — et gagne à être regardée comme un tout.",
         strengths: ["Perspective unique", "Créativité inter-domaines"],
+        imageLabel: "Espace réservé pour image — cercles superposés en couleurs chaudes",
+        summary:
+          "La plupart des personnes neurodivergentes sont plus d'une chose à la fois. AuDHD et autres co-occurrences méritent d'être comprises comme un tout, pas comme un tiraillement.",
+        about: [
+          "AuDHD désigne la co-occurrence de l'autisme et du TDAH chez la même personne — une combinaison considérée jusqu'à récemment comme impossible par les manuels diagnostiques. Le DSM-5 (2013) a finalement autorisé les deux diagnostics ensemble, et la recherche depuis confirme : c'est plutôt fréquent que rare.",
+          "Vivre les deux à la fois ressemble souvent à une traction interne entre nouveauté et routine, entre surcharge sensorielle et recherche de stimulation. Beaucoup décrivent de longues phases où ils sont 'trop d'une chose pour l'autre communauté'. Regarder le profil entier — plutôt que chaque étiquette isolément — rend le soutien bien plus utile.",
+        ],
+        facts: [
+          "Entre 50 et 70% des personnes autistes répondent aussi aux critères du TDAH ; environ 30 à 50% des personnes TDAH montrent des traits autistiques cliniquement significatifs (Hours et al., 2022).",
+          "La co-occurrence est la règle, pas l'exception — anxiété, dyslexie, dyspraxie, dyscalculie et Tourette se regroupent souvent.",
+          "Les profils combinés sont liés à une créativité inter-domaines, une clarté éthique et des angles de résolution inhabituels.",
+          "Un traitement qui ignore l'un des côtés sous-performe ; un soutien intégré et centré sur la personne dépasse les parcours parallèles.",
+        ],
+        tips: [
+          "Cartographie ton profil dans son ensemble — les parties interagissent, le soutien aussi.",
+          "Bâtis des routines assez souples pour la nouveauté ; structure avec sorties de secours bat les extrêmes.",
+          "Suis ton énergie sur la semaine, pas seulement la journée — la récupération fait partie du travail.",
+          "Cherche des cliniciens et coachs qui tiennent l'ensemble ; les soins fragmentés épuisent et atteignent rarement leur but.",
+        ],
+        references: [
+          {
+            label: "Hours, Recasens & Baleyte (2022) — ASD and ADHD comorbidity: review",
+            url: "https://doi.org/10.3389/fpsyt.2022.837424",
+          },
+          {
+            label: "Antshel & Russo (2019) — ASD and ADHD: overlapping phenomenology",
+            url: "https://doi.org/10.1007/s11920-019-1020-5",
+          },
+          {
+            label: "American Psychiatric Association — DSM-5 (2013) on co-occurrence",
+            url: "https://www.psychiatry.org/psychiatrists/practice/dsm",
+          },
+        ],
       },
     ],
     positiveSection: {
@@ -687,6 +906,45 @@ export const fr: Dictionary = {
       editorialAltPrefix: "Photo éditoriale —",
     },
     dateLocale: "fr-CH",
+  },
+  webinarsPage: {
+    hero: {
+      eyebrow: "Webinaires",
+      title: "Regarde, apprends et ramène ça dans ta vie.",
+      lead: "Sessions enregistrées par des cliniciens et coachs de notre réseau — sur l'attention, la régulation sensorielle, le diagnostic tardif et les questions pratiques que la communauté nous pose le plus.",
+    },
+    filters: {
+      all: "Tous",
+      free: "Gratuits",
+      paid: "Payants",
+    },
+    freeBadge: "Gratuit",
+    paidBadge: "Soutien",
+    watchLabel: "Regarder maintenant",
+    unlockLabel: "Déverrouiller",
+    closeLabel: "Fermer",
+    durationLabel: "Durée",
+    speakerLabel: "Intervenant·e",
+    lock: {
+      eyebrow: "Webinaire soutien",
+      title: "Débloque ce webinaire avec un don.",
+      body: "Nous mettons nos sessions approfondies à disposition des personnes qui soutiennent NSNS. Un don de {amount} débloque ce webinaire et nous aide à maintenir nos programmes de coaching, mentorat et communauté.",
+      donateButton: "Faire un don de {amount} pour débloquer",
+      maybeLater: "Peut-être plus tard",
+      note: "Après ton don, nous t'enverrons un lien privé par e-mail pour le visionner.",
+    },
+    showingPrefix: "Affichage de",
+    showingMiddle: "sur",
+    showingSuffix: "webinaires",
+    empty: {
+      title: "Aucun webinaire ne correspond à ce filtre.",
+      retry: "Essaie le filtre « Tous » pour voir tout ce que nous avons enregistré.",
+    },
+    cta: {
+      title: "Un sujet à couvrir ?",
+      body: "Nous enregistrons de nouvelles sessions chaque mois, en fonction des demandes de la communauté. Propose un sujet, ou rejoins-nous comme intervenant·e invité·e.",
+      button: "Nous contacter",
+    },
   },
   coachesPage: {
     hero: {
@@ -840,5 +1098,6 @@ export const fr: Dictionary = {
     assessmentFaqs,
     positiveMessages,
     ndFacts,
+    webinars,
   },
 };

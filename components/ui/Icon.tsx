@@ -8,6 +8,7 @@ import {
   Globe,
   Heart,
   Leaf,
+  Lock,
   Mail,
   Map as MapIcon,
   MapPin,
@@ -29,7 +30,7 @@ export type IconName =
   | "arrow" | "heart" | "leaf" | "map" | "globe" | "chat" | "book" | "check"
   | "calendar" | "search" | "filter" | "star" | "sparkle" | "x" | "mail"
   | "phone" | "pin" | "insta" | "linkedin" | "clock" | "user" | "wave"
-  | "shield" | "puzzle";
+  | "shield" | "puzzle" | "lock";
 
 const lucideMap: Partial<Record<IconName, LucideIcon>> = {
   arrow: ArrowRight,
@@ -54,6 +55,7 @@ const lucideMap: Partial<Record<IconName, LucideIcon>> = {
   wave: Waves,
   shield: Shield,
   puzzle: Puzzle,
+  lock: Lock,
 };
 
 // Lucide no longer ships brand marks (Instagram / LinkedIn were removed for

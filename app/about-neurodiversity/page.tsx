@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Photo } from "@/components/ui/Photo";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
+import { Modal } from "@/components/ui/Modal";
+import { LinkButton } from "@/components/ui/Button";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 
 const profileColours: ("teal" | "purple")[] = ["teal", "purple", "teal", "purple"];
@@ -17,6 +20,9 @@ export default function AboutNdPage() {
   const { t } = useI18n();
   const a = t.aboutNd;
   const adviceNums = ["01", "02", "03", "04", "05"];
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const activeProfile = openIndex !== null ? a.profiles[openIndex] : null;
+  const activeColour = openIndex !== null ? profileColours[openIndex] : "purple";
   return (
     <>
       <PageHero
@@ -62,9 +68,11 @@ export default function AboutNdPage() {
             {a.profiles.map((p, i) => {
               const colour = profileColours[i];
               return (
-                <div
+                <button
                   key={p.name}
-                  className="bg-bg-card border border-brand-border rounded-[var(--r-lg)] p-6 md:p-8"
+                  type="button"
+                  onClick={() => setOpenIndex(i)}
+                  className="group text-left w-full bg-bg-card border border-brand-border rounded-[var(--r-lg)] p-6 md:p-8 transition duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow)] hover:border-[color:var(--brand-border-strong)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--purple)] focus-visible:ring-offset-2 cursor-pointer"
                 >
                   <div className="flex gap-3 items-center mb-4">
                     <div
@@ -105,7 +113,14 @@ export default function AboutNdPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                  <div
+                    className="mt-5 inline-flex items-center gap-1.5 text-[0.95rem] font-bold"
+                    style={{ color: colour === "purple" ? "var(--purple-deep)" : "var(--teal-deep)" }}
+                  >
+                    <span>{a.formsSection.learnMore}</span>
+                    <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-[3px]">→</span>
+                  </div>
+                </button>
               );
             })}
           </div>
@@ -179,6 +194,144 @@ export default function AboutNdPage() {
           </div>
         </div>
       </section>
+
+      <Modal
+        open={activeProfile !== null}
+        onClose={() => setOpenIndex(null)}
+        labelledBy="nd-modal-title"
+        closeLabel={a.formsSection.closeLabel}
+      >
+        {activeProfile && (
+          <div>
+            <Photo
+              label={activeProfile.imageLabel}
+              ratio="16/8"
+              tint={activeColour}
+              rounded="0"
+            />
+            <div className="p-6 md:p-10">
+              <div className="flex gap-3 items-center mb-4">
+                <div
+                  className="w-12 h-12 rounded-[14px] inline-flex items-center justify-center shrink-0"
+                  style={{
+                    background: activeColour === "purple" ? "var(--purple-soft)" : "var(--teal-soft)",
+                    color: activeColour === "purple" ? "var(--purple-deep)" : "var(--teal-deep)",
+                  }}
+                >
+                  <Icon name="puzzle" size={22} />
+                </div>
+                <h2 id="nd-modal-title" className="text-[1.6rem] md:text-[2rem] leading-tight font-black">
+                  {activeProfile.name}
+                </h2>
+              </div>
+              <div className="flex gap-1.5 flex-wrap mb-5">
+                {activeProfile.tags.map((tag) => (
+                  <Chip
+                    key={tag}
+                    tone={activeColour === "purple" ? "purple" : "teal"}
+                    className="!text-[0.72rem]"
+                  >
+                    {tag}
+                  </Chip>
+                ))}
+              </div>
+              <p
+                className="text-[1.05rem] md:text-[1.15rem] leading-[1.5] mb-7 font-medium"
+                style={{ color: activeColour === "purple" ? "var(--purple-ink)" : "var(--teal-ink)" }}
+              >
+                {activeProfile.summary}
+              </p>
+
+              <h3 className="text-[1.05rem] md:text-[1.15rem] font-bold mb-3">{a.formsSection.aboutTitle}</h3>
+              <div className="flex flex-col gap-3 mb-7">
+                {activeProfile.about.map((para, idx) => (
+                  <p key={idx} className="text-[0.98rem] md:text-[1.02rem] text-ink-muted leading-[1.6]">
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              <div className="grid gap-7 mb-7">
+                <div>
+                  <h3 className="text-[1.05rem] md:text-[1.15rem] font-bold mb-3">{a.formsSection.factsTitle}</h3>
+                  <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+                    {activeProfile.facts.map((f) => (
+                      <li key={f} className="flex gap-2.5 items-start text-[0.95rem] leading-[1.5]">
+                        <span
+                          className="mt-[3px] shrink-0"
+                          style={{ color: activeColour === "purple" ? "var(--purple)" : "var(--teal)" }}
+                        >
+                          <Icon name="sparkle" size={16} />
+                        </span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-[1.05rem] md:text-[1.15rem] font-bold mb-3">{a.formsSection.tipsTitle}</h3>
+                  <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+                    {activeProfile.tips.map((tip) => (
+                      <li key={tip} className="flex gap-2.5 items-start text-[0.95rem] leading-[1.5]">
+                        <span
+                          className="mt-[3px] shrink-0"
+                          style={{ color: activeColour === "purple" ? "var(--purple)" : "var(--teal)" }}
+                        >
+                          <Icon name="check" size={16} />
+                        </span>
+                        <span>{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-[0.9rem] font-bold text-ink-muted mb-2.5 uppercase tracking-wide">
+                  {a.formsSection.referencesTitle}
+                </h3>
+                <ul className="list-none p-0 m-0 flex flex-col gap-2 mb-8">
+                  {activeProfile.references.map((r) => (
+                    <li key={r.url} className="text-[0.9rem] leading-[1.5]">
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-1 underline-offset-2 hover:no-underline"
+                        style={{ color: activeColour === "purple" ? "var(--purple-deep)" : "var(--teal-deep)" }}
+                      >
+                        {r.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                className="rounded-[var(--r-lg)] p-6 md:p-7"
+                style={{
+                  background: activeColour === "purple" ? "var(--purple-soft)" : "var(--teal-soft)",
+                  color: activeColour === "purple" ? "var(--purple-ink)" : "var(--teal-ink)",
+                }}
+              >
+                <h3 className="text-[1.15rem] md:text-[1.3rem] font-black mb-2 leading-tight">
+                  {a.formsSection.modalCta.title}
+                </h3>
+                <p className="text-[0.98rem] leading-[1.55] mb-5 opacity-90">
+                  {a.formsSection.modalCta.body}
+                </p>
+                <LinkButton
+                  href="/contact"
+                  variant={activeColour === "purple" ? "secondary" : "primary"}
+                  arrow
+                >
+                  {a.formsSection.modalCta.button}
+                </LinkButton>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </>
   );
 }

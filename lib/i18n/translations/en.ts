@@ -459,6 +459,81 @@ const positiveMessages: string[] = [
   "Diagnosis is a door, not a verdict.",
 ]
 
+const webinars = [
+  {
+    id: "ouZrZa5pLXk",
+    startAt: 457,
+    title: "What is ADHD? A clear, jargon-free introduction",
+    description:
+      "An accessible explainer covering what ADHD actually is, how it differs from the stereotypes, and why it looks so different across ages, genders, and contexts. A good first stop if you're newly curious.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "lsyVwDh99rQ",
+    startAt: 0,
+    title: "AuDHD explained: can you have ADHD and autism at the same time?",
+    description:
+      "Experts unpack the overlap between ADHD and autism — why the two conditions were long treated as mutually exclusive, what co-occurrence actually looks like, and how to approach support when both are present.",
+    duration: "11 min",
+    speaker: "Understood",
+    category: "AuDHD",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "nxq5eA7quxw",
+    startAt: 0,
+    title: "Why rejection hurts so much with ADHD — RSD explained",
+    description:
+      "A psychotherapist explains Rejection Sensitive Dysphoria: what it is, why it hits so hard, how it shapes relationships and self-esteem, and what actually helps. One of the most under-discussed aspects of ADHD.",
+    duration: "8 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "t2vpxXQfPFY",
+    startAt: 0,
+    title: "ADHD and stress: what's happening and what helps",
+    description:
+      "A psychotherapist breaks down why ADHD and chronic stress are so often tangled together — the neurological reasons stress is harder to regulate, and the approaches that genuinely move the needle.",
+    duration: "9 min",
+    speaker: "Understood",
+    category: "ADHD",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "c4a47wBV_Cc",
+    startAt: 0,
+    title: "The biggest special education myths — debunked",
+    description:
+      "A special education teacher tackles the most persistent myths about learning differences, IEPs, and what 'support' actually means. Essential viewing for parents, educators, and anyone who was told the wrong things growing up.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "Education",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "L7YJGecsf-s",
+    startAt: 0,
+    title: "The biggest challenges of adult ADHD — a psychologist's view",
+    description:
+      "A psychologist walks through the specific ways ADHD shows up in adult life — relationships, work, identity, and the particular exhaustion of years without a diagnosis. Practical and validating in equal measure.",
+    duration: "10 min",
+    speaker: "Understood",
+    category: "Adult ADHD",
+    isFree: false,
+    price: "CHF 15",
+  },
+]
+
 const ndFacts: NdFact[] = [
   {
     stat: "~15–20%",
@@ -493,6 +568,7 @@ export const en = {
     coachDirectory: "Coach directory",
     assessments: "Assessments",
     aboutNd: "About neurodiversity",
+    webinars: "Webinars",
     blog: "Blog & Events",
     contact: "Contact",
     donate: "Donate",
@@ -654,6 +730,17 @@ export const en = {
       title: "Some common patterns.",
       lead: "Every neurodivergent person is unique. But here's a rough sketch of some of the most common experiences we work with.",
       strengthsLabel: "Associated strengths",
+      learnMore: "Learn more",
+      closeLabel: "Close",
+      aboutTitle: "What it actually is",
+      factsTitle: "A few things worth knowing",
+      tipsTitle: "Things that tend to help",
+      referencesTitle: "Further reading",
+      modalCta: {
+        title: "Want to talk to someone who gets it?",
+        body: "Whether you're newly curious, waiting for an assessment, or supporting someone you love — we'd be glad to hear from you. A first conversation is free, unhurried, and has no obligation.",
+        button: "Get in touch",
+      },
     },
     profiles: [
       {
@@ -665,6 +752,39 @@ export const en = {
           "Crisis response",
           "High-interest deep work",
         ],
+        imageLabel: "Illustration placeholder — bright sparks of activity around a brain",
+        summary:
+          "ADHD is a difference in how the brain regulates attention, motivation, and time — not a lack of will or intelligence.",
+        about: [
+          "ADHD (Attention-Deficit/Hyperactivity Disorder) is a neurodevelopmental difference recognised across the lifespan. It shows up in how attention is allocated, how motivation is generated, and how time and effort are felt — not in how clever or capable a person is.",
+          "Research points to a strong genetic component, with heritability estimated around 74%, and to differences in dopamine and noradrenaline signalling that shape reward and self-regulation. ADHD is one of the most studied conditions in psychiatry, and the consensus is clear: it is real, it persists into adulthood, and it responds well to a combination of accommodations, skills, and (where helpful) medication.",
+        ],
+        facts: [
+          "ADHD affects roughly 5% of children and around 2.5% of adults worldwide (Faraone et al., 2021).",
+          "Late diagnosis is common — particularly for women, girls, and people who learned to mask their traits.",
+          "Hyperfocus, divergent thinking, and quick problem-solving in novel situations are widely reported strengths.",
+          "Co-occurring traits — anxiety, dyslexia, autism, sleep differences — are common, and supporting ADHD often eases them too.",
+        ],
+        tips: [
+          "External scaffolding — alarms, lists, body-doubling, visible timers — beats willpower every time.",
+          "Match the environment to your interests; novelty and stakes are how the ADHD brain switches on.",
+          "Sleep, movement, and protein-forward meals shift baseline focus more than most apps do.",
+          "Coaching or therapy aimed at executive function compounds well alongside medical treatment.",
+        ],
+        references: [
+          {
+            label: "Faraone et al. (2021) — World Federation of ADHD International Consensus Statement",
+            url: "https://doi.org/10.1016/j.neubiorev.2021.01.022",
+          },
+          {
+            label: "NIMH — Attention-Deficit/Hyperactivity Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+          },
+          {
+            label: "CDC — About ADHD",
+            url: "https://www.cdc.gov/adhd/",
+          },
+        ],
       },
       {
         name: "Autism",
@@ -675,18 +795,117 @@ export const en = {
           "Subject-matter depth",
           "Honesty & integrity",
         ],
+        imageLabel: "Illustration placeholder — interconnected geometric patterns",
+        summary:
+          "Autism is a different way of perceiving, processing, and connecting with the world — a difference, not a deficit.",
+        about: [
+          "Autism is a lifelong neurodevelopmental difference characterised by distinct ways of processing sensory information, communicating, and engaging with focused interests. It exists on a spectrum: no two autistic people are alike, and abilities can vary widely across domains and across days.",
+          "Autism has strong genetic and developmental roots and is identified roughly in 1 in 100 people globally, with higher rates in countries that screen actively. Many adults — especially women, non-binary people, and people of colour — are identified late, after years of masking. A growing body of research supports a strengths-aware, neurodiversity-affirming approach in place of older deficit-focused models.",
+        ],
+        facts: [
+          "Around 1 in 100 people are autistic worldwide (Zeidan et al., 2022 — meta-analysis in Autism Research).",
+          "Autistic people often show outstanding pattern recognition, attention to detail, and depth of expertise in areas of interest.",
+          "Sensory differences are core, not peripheral — accommodating them usually helps everything else (Robertson & Baron-Cohen, 2017).",
+          "Autistic communication is direct and precise; misunderstandings between autistic and non-autistic people go in both directions (Crompton et al., 2020 — the 'double empathy' problem).",
+        ],
+        tips: [
+          "Treat sensory needs as data, not preferences — adjust lighting, sound, fabric, and pace before anything else.",
+          "Build predictability where you can; surprise is more taxing than work.",
+          "Honour special interests as restorative — they are how energy is replenished, not avoided.",
+          "Find autistic-led communities; lived experience often beats clinical advice on day-to-day quality of life.",
+        ],
+        references: [
+          {
+            label: "Zeidan et al. (2022) — Global prevalence of autism: meta-analysis",
+            url: "https://doi.org/10.1002/aur.2696",
+          },
+          {
+            label: "Crompton et al. (2020) — Autistic peer-to-peer information transfer is highly effective",
+            url: "https://doi.org/10.1177/1362361320919286",
+          },
+          {
+            label: "NIMH — Autism Spectrum Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd",
+          },
+        ],
       },
       {
         name: "Dyslexia",
         tags: ["Reading", "Visual-Spatial"],
         body: "A difference in how written language is processed. Often comes with strong visual-spatial thinking and narrative reasoning.",
         strengths: ["Big-picture thinking", "Storytelling", "3D reasoning"],
+        imageLabel: "Illustration placeholder — letters and shapes flowing into a story",
+        summary:
+          "Dyslexia is a difference in how written language is processed — most often paired with strong visual, narrative, and big-picture thinking.",
+        about: [
+          "Dyslexia is the most common specific learning difference, affecting an estimated 5–10% of the population. It centres on how the brain maps sounds to letters and how quickly familiar words are retrieved — it has nothing to do with intelligence or effort.",
+          "Decades of neuroimaging research show measurable differences in left-hemisphere reading networks, well-described in the work of Sally and Bennett Shaywitz at Yale. The good news: with the right teaching methods (structured literacy / Orthographic Mapping), and adult tools (text-to-speech, dictation, spell support), dyslexic readers and writers can fully thrive.",
+        ],
+        facts: [
+          "Roughly 5–10% of people are dyslexic; it runs strongly in families (International Dyslexia Association).",
+          "Reading difference does not equal intelligence difference — IQ and reading ability are largely independent (Ferrer et al., 2010).",
+          "Dyslexic thinkers are over-represented in entrepreneurship, design, engineering, and the arts.",
+          "Modern assistive tech — text-to-speech, voice input, smart spell — has changed what daily life with dyslexia looks like.",
+        ],
+        tips: [
+          "Use audio in parallel with text when reading anything important — comprehension goes up, fatigue goes down.",
+          "Dictate first drafts; edit later. Separating composition from spelling is a real productivity unlock.",
+          "Sans-serif fonts, generous line spacing, and off-white backgrounds reduce visual stress for many.",
+          "Name dyslexia at work — it unlocks accommodations and frames quirks as the difference they are.",
+        ],
+        references: [
+          {
+            label: "International Dyslexia Association — Definition of Dyslexia",
+            url: "https://dyslexiaida.org/definition-of-dyslexia/",
+          },
+          {
+            label: "Ferrer et al. (2010) — Uncoupling of reading and IQ over time",
+            url: "https://doi.org/10.1177/0956797609354084",
+          },
+          {
+            label: "Yale Center for Dyslexia & Creativity",
+            url: "https://dyslexia.yale.edu/",
+          },
+        ],
       },
       {
         name: "AuDHD & co-occurrence",
         tags: ["Combined", "Common"],
         body: "Many neurodivergent people are more than one thing. The combination often looks different from either part alone — and benefits from being looked at as a whole.",
         strengths: ["Unique perspective", "Cross-domain creativity"],
+        imageLabel: "Illustration placeholder — overlapping circles in warm colours",
+        summary:
+          "Most neurodivergent people are more than one thing at once. AuDHD and other co-occurring profiles deserve to be understood as a whole, not as a tug-of-war.",
+        about: [
+          "AuDHD describes the co-occurrence of autism and ADHD in the same person — a combination that was, until recently, considered impossible by diagnostic manuals. The DSM-5 (2013) finally allowed both diagnoses together, and research has since confirmed it is common rather than rare.",
+          "Living with both at once often feels like an internal pull between novelty and routine, between sensory overwhelm and stimulation-seeking. Many people describe long stretches of feeling 'too much of one thing for the other community'. Looking at the whole profile — rather than each label in isolation — makes support far more useful.",
+        ],
+        facts: [
+          "Between 50–70% of autistic people also meet criteria for ADHD; roughly 30–50% of people with ADHD show clinically significant autistic traits (Hours et al., 2022).",
+          "Co-occurrence is the rule, not the exception — anxiety, dyslexia, dyspraxia, dyscalculia, and Tourette's also commonly cluster.",
+          "Combined profiles are linked with cross-domain creativity, ethical clarity, and unusual problem-solving angles.",
+          "Treatment that ignores either side tends to under-perform; integrated, person-centred support outperforms parallel pathways.",
+        ],
+        tips: [
+          "Map your own profile as a whole — the parts interact, and so should the support.",
+          "Build routines flexible enough for novelty; structure with escape hatches works better than either extreme.",
+          "Track energy across the week, not just the day — recovery time is part of the work.",
+          "Find clinicians and coaches who hold the full picture; fragmented care is exhausting and rarely lands.",
+        ],
+        references: [
+          {
+            label: "Hours, Recasens & Baleyte (2022) — ASD and ADHD comorbidity: review",
+            url: "https://doi.org/10.3389/fpsyt.2022.837424",
+          },
+          {
+            label: "Antshel & Russo (2019) — ASD and ADHD: overlapping phenomenology",
+            url: "https://doi.org/10.1007/s11920-019-1020-5",
+          },
+          {
+            label: "American Psychiatric Association — DSM-5 (2013) on co-occurrence",
+            url: "https://www.psychiatry.org/psychiatrists/practice/dsm",
+          },
+        ],
       },
     ],
     positiveSection: {
@@ -791,6 +1010,45 @@ export const en = {
       editorialAltPrefix: "Editorial photo —",
     },
     dateLocale: "en-GB",
+  },
+  webinarsPage: {
+    hero: {
+      eyebrow: "Webinars",
+      title: "Watch, learn, and bring it back to your life.",
+      lead: "Recorded sessions from clinicians and coaches in our network — on attention, sensory regulation, late diagnosis, and the practical questions our community keeps asking.",
+    },
+    filters: {
+      all: "All",
+      free: "Free",
+      paid: "Paid",
+    },
+    freeBadge: "Free",
+    paidBadge: "Supporter",
+    watchLabel: "Watch now",
+    unlockLabel: "Unlock",
+    closeLabel: "Close",
+    durationLabel: "Duration",
+    speakerLabel: "Speaker",
+    lock: {
+      eyebrow: "Supporter webinar",
+      title: "Unlock this webinar with a donation.",
+      body: "We make our in-depth sessions available to people who support NSNS. A donation of {amount} unlocks this webinar and helps us keep our coaching, peer-mentoring and community programmes running.",
+      donateButton: "Donate {amount} to unlock",
+      maybeLater: "Maybe later",
+      note: "After your donation, we'll email you a private link to watch.",
+    },
+    showingPrefix: "Showing",
+    showingMiddle: "of",
+    showingSuffix: "webinars",
+    empty: {
+      title: "No webinars match that filter.",
+      retry: "Try the “All” filter to see everything we've recorded.",
+    },
+    cta: {
+      title: "Want a topic covered?",
+      body: "We record new sessions every month based on what the community asks for. Suggest a topic, or join us as a guest speaker.",
+      button: "Get in touch",
+    },
   },
   coachesPage: {
     hero: {
@@ -957,6 +1215,7 @@ export const en = {
     assessmentFaqs,
     positiveMessages,
     ndFacts,
+    webinars,
   },
 }
 

@@ -408,6 +408,81 @@ const positiveMessages: string[] = [
   "Eine Diagnose ist eine Tür, kein Urteil.",
 ];
 
+const webinars = [
+  {
+    id: "ouZrZa5pLXk",
+    startAt: 457,
+    title: "Was ist ADHS? Eine klare Einführung ohne Fachbegriffe",
+    description:
+      "Eine zugängliche Erklärung, was ADHS wirklich ist, wie es sich von Klischees unterscheidet und warum es je nach Alter, Geschlecht und Kontext so unterschiedlich aussieht. Ein guter Einstieg für alle, die neu neugierig sind.",
+    duration: "9 Min.",
+    speaker: "Understood",
+    category: "ADHS",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "lsyVwDh99rQ",
+    startAt: 0,
+    title: "AuDHS erklärt: Kann man gleichzeitig ADHS und Autismus haben?",
+    description:
+      "Fachleute erklären die Überschneidungen zwischen ADHS und Autismus — warum die beiden Diagnosen lange als unvereinbar galten, wie Ko-Vorkommen tatsächlich aussieht und wie Unterstützung aussehen kann, wenn beides zutrifft.",
+    duration: "11 Min.",
+    speaker: "Understood",
+    category: "AuDHS",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "nxq5eA7quxw",
+    startAt: 0,
+    title: "Warum Ablehnung bei ADHS so wehtut — RSD erklärt",
+    description:
+      "Eine Psychotherapeutin erklärt die Rejection Sensitive Dysphoria: was sie ist, warum sie so hart trifft, wie sie Beziehungen und Selbstwert prägt und was wirklich hilft. Einer der am meisten unterschätzten Aspekte von ADHS.",
+    duration: "8 Min.",
+    speaker: "Understood",
+    category: "ADHS",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "t2vpxXQfPFY",
+    startAt: 0,
+    title: "ADHS und Stress: Was passiert — und was hilft",
+    description:
+      "Eine Psychotherapeutin erklärt, warum ADHS und chronischer Stress so häufig verflochten sind — die neurologischen Gründe, warum Stress schwerer zu regulieren ist, und die Ansätze, die wirklich etwas bewirken.",
+    duration: "9 Min.",
+    speaker: "Understood",
+    category: "ADHS",
+    isFree: false,
+    price: "CHF 15",
+  },
+  {
+    id: "c4a47wBV_Cc",
+    startAt: 0,
+    title: "Die grössten Mythen über Sonderpädagogik — widerlegt",
+    description:
+      "Eine Sonderpädagogin räumt mit den hartnäckigsten Mythen über Lerndifferenzen, Förderpläne und was «Unterstützung» wirklich bedeutet auf. Pflichtlektüre für Eltern, Lehrpersonen und alle, die falsche Dinge über sich gehört haben.",
+    duration: "10 Min.",
+    speaker: "Understood",
+    category: "Bildung",
+    isFree: true,
+    price: "",
+  },
+  {
+    id: "L7YJGecsf-s",
+    startAt: 0,
+    title: "Die grössten Herausforderungen von ADHS im Erwachsenenalter",
+    description:
+      "Ein Psychologe zeigt, wie ADHS das Erwachsenenleben prägt — Beziehungen, Arbeit, Identität und die besondere Erschöpfung nach Jahren ohne Diagnose. Praktisch und bestätigend zugleich.",
+    duration: "10 Min.",
+    speaker: "Understood",
+    category: "Erwachsenes ADHS",
+    isFree: false,
+    price: "CHF 15",
+  },
+]
+
 const ndFacts: NdFact[] = [
   { stat: "~15–20%", label: "der Menschen sind schätzungsweise auf irgendeine Weise neurodivergent" },
   { stat: "5–8 Jahre", label: "durchschnittliche Verzögerung zwischen erstem Hilfesuchen und Diagnose im Erwachsenenalter" },
@@ -431,6 +506,7 @@ export const de: Dictionary = {
     coachDirectory: "Coach-Verzeichnis",
     assessments: "Assessments",
     aboutNd: "Über Neurodivergenz",
+    webinars: "Webinare",
     blog: "Blog & Events",
     contact: "Kontakt",
     donate: "Spenden",
@@ -585,6 +661,17 @@ export const de: Dictionary = {
       title: "Einige häufige Muster.",
       lead: "Jeder neurodivergente Mensch ist einzigartig. Aber hier ist eine grobe Skizze der häufigsten Erfahrungen, mit denen wir arbeiten.",
       strengthsLabel: "Verbundene Stärken",
+      learnMore: "Mehr erfahren",
+      closeLabel: "Schliessen",
+      aboutTitle: "Was es eigentlich ist",
+      factsTitle: "Ein paar wichtige Fakten",
+      tipsTitle: "Was häufig hilft",
+      referencesTitle: "Weiterführende Literatur",
+      modalCta: {
+        title: "Möchtest du mit jemandem sprechen, der es versteht?",
+        body: "Ob du gerade neu neugierig bist, auf ein Assessment wartest oder einen geliebten Menschen unterstützt — wir hören gerne von dir. Ein erstes Gespräch ist kostenlos, in deinem Tempo und ohne jede Verpflichtung.",
+        button: "Kontakt aufnehmen",
+      },
     },
     profiles: [
       {
@@ -592,24 +679,156 @@ export const de: Dictionary = {
         tags: ["Aufmerksamkeit", "Exekutive Funktionen", "Hyperfokus"],
         body: "Ein Unterschied darin, wie Aufmerksamkeit, Motivation und exekutive Funktionen arbeiten — oft mit Zeitblindheit, einem Hunger nach Neuem und der Fähigkeit zu tiefem Hyperfokus auf das Richtige.",
         strengths: ["Kreative Sprünge", "Krisenreaktion", "Tiefe Arbeit bei starkem Interesse"],
+        imageLabel: "Bildplatzhalter — helle Aktivitätsfunken um ein Gehirn",
+        summary:
+          "ADHS ist ein Unterschied darin, wie das Gehirn Aufmerksamkeit, Motivation und Zeit reguliert — kein Mangel an Wille oder Intelligenz.",
+        about: [
+          "ADHS (Aufmerksamkeitsdefizit-/Hyperaktivitätsstörung) ist eine neurologische Entwicklungsbesonderheit, die über die gesamte Lebensspanne anerkannt ist. Sie zeigt sich darin, wie Aufmerksamkeit verteilt wird, wie Motivation entsteht und wie Zeit und Anstrengung erlebt werden — nicht in Klugheit oder Fähigkeit.",
+          "Forschungsergebnisse weisen auf eine starke genetische Komponente hin, mit einer Erblichkeit von rund 74%, sowie auf Unterschiede in der Dopamin- und Noradrenalin-Signalisierung, die Belohnung und Selbstregulation prägen. ADHS gehört zu den am besten erforschten Themen der Psychiatrie. Der Konsens ist klar: Es ist real, hält bis ins Erwachsenenalter an und reagiert gut auf eine Kombination aus Anpassungen, Fertigkeiten und gegebenenfalls Medikamenten.",
+        ],
+        facts: [
+          "ADHS betrifft weltweit etwa 5% der Kinder und rund 2,5% der Erwachsenen (Faraone et al., 2021).",
+          "Späte Diagnosen sind häufig — besonders bei Frauen, Mädchen und Personen, die ihre Merkmale lange maskiert haben.",
+          "Hyperfokus, divergentes Denken und schnelle Problemlösung in neuen Situationen werden häufig als Stärken berichtet.",
+          "Begleiterscheinungen wie Angst, Dyslexie, Autismus oder Schlafunterschiede sind häufig — und ADHS-Unterstützung erleichtert oft auch diese.",
+        ],
+        tips: [
+          "Externe Strukturen — Wecker, Listen, Body-Doubling, sichtbare Timer — schlagen Willenskraft jedes Mal.",
+          "Stimme dein Umfeld auf deine Interessen ab; Neuheit und Bedeutung sind, wie das ADHS-Gehirn anspringt.",
+          "Schlaf, Bewegung und proteinreiche Mahlzeiten verschieben die Grundkonzentration mehr als die meisten Apps.",
+          "Coaching oder Therapie, die exekutive Funktionen fokussiert, wirken neben einer medizinischen Behandlung kumulativ.",
+        ],
+        references: [
+          {
+            label: "Faraone et al. (2021) — World Federation of ADHD International Consensus Statement",
+            url: "https://doi.org/10.1016/j.neubiorev.2021.01.022",
+          },
+          {
+            label: "NIMH — Attention-Deficit/Hyperactivity Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+          },
+          {
+            label: "CDC — About ADHD",
+            url: "https://www.cdc.gov/adhd/",
+          },
+        ],
       },
       {
         name: "Autismus",
         tags: ["Sensorisch", "Muster", "Direktheit"],
         body: "Ein Unterschied in der Verarbeitung sensorischer Eindrücke und sozialer Kommunikation. Oft verbunden mit Mustererkennung, tiefem Fachwissen und einem starken Gerechtigkeitssinn.",
         strengths: ["Mustererkennung", "Fachliche Tiefe", "Ehrlichkeit & Integrität"],
+        imageLabel: "Bildplatzhalter — verbundene geometrische Muster",
+        summary:
+          "Autismus ist eine andere Art, die Welt wahrzunehmen, zu verarbeiten und mit ihr in Verbindung zu treten — ein Unterschied, kein Defizit.",
+        about: [
+          "Autismus ist eine lebenslange neurologische Entwicklungsbesonderheit, die durch unterschiedliche Wege gekennzeichnet ist, sensorische Informationen zu verarbeiten, zu kommunizieren und sich auf eigene Interessen einzulassen. Er existiert auf einem Spektrum: Keine zwei autistischen Menschen sind gleich, und Fähigkeiten können sich von Bereich zu Bereich und von Tag zu Tag stark unterscheiden.",
+          "Autismus hat starke genetische und entwicklungsbedingte Wurzeln und wird weltweit bei rund 1 von 100 Personen identifiziert, mit höheren Raten in Ländern, die aktiv screenen. Viele Erwachsene — besonders Frauen, nicht-binäre Personen und People of Color — werden spät erkannt, oft nach Jahren des Maskierens. Eine wachsende Forschung unterstützt einen stärkenorientierten, neurodiversitätsbejahenden Ansatz statt älterer defizitorientierter Modelle.",
+        ],
+        facts: [
+          "Etwa 1 von 100 Menschen ist autistisch (Zeidan et al., 2022 — Meta-Analyse in Autism Research).",
+          "Autistische Menschen zeigen häufig herausragende Mustererkennung, Detailgenauigkeit und tiefes Fachwissen in Interessensgebieten.",
+          "Sensorische Unterschiede sind zentral, nicht peripher — sie zu berücksichtigen erleichtert meistens alles andere (Robertson & Baron-Cohen, 2017).",
+          "Autistische Kommunikation ist direkt und präzise; Missverständnisse zwischen autistischen und nicht-autistischen Menschen verlaufen in beide Richtungen (Crompton et al., 2020 — Double-Empathy-Problem).",
+        ],
+        tips: [
+          "Behandle sensorische Bedürfnisse als Daten, nicht als Vorlieben — passe zuerst Licht, Geräusch, Stoffe und Tempo an.",
+          "Schaffe Vorhersehbarkeit, wo es geht; Überraschungen kosten mehr Energie als Arbeit.",
+          "Würdige Spezialinteressen als erholsam — sie sind, wie Energie aufgefüllt wird, nicht abgelenkt.",
+          "Suche autistisch geleitete Communities; gelebte Erfahrung schlägt im Alltag oft den klinischen Rat.",
+        ],
+        references: [
+          {
+            label: "Zeidan et al. (2022) — Globale Prävalenz von Autismus: Meta-Analyse",
+            url: "https://doi.org/10.1002/aur.2696",
+          },
+          {
+            label: "Crompton et al. (2020) — Autistic peer-to-peer information transfer is highly effective",
+            url: "https://doi.org/10.1177/1362361320919286",
+          },
+          {
+            label: "NIMH — Autism Spectrum Disorder",
+            url: "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd",
+          },
+        ],
       },
       {
         name: "Dyslexie",
         tags: ["Lesen", "Visuell-Räumlich"],
         body: "Ein Unterschied in der Verarbeitung geschriebener Sprache. Oft mit starkem visuell-räumlichem Denken und erzählerischer Logik verbunden.",
         strengths: ["Gesamtbildliches Denken", "Erzählen", "3D-Denken"],
+        imageLabel: "Bildplatzhalter — Buchstaben und Formen, die zu einer Geschichte fliessen",
+        summary:
+          "Dyslexie ist ein Unterschied darin, wie geschriebene Sprache verarbeitet wird — meist gepaart mit starkem visuellen, erzählerischen und gesamtbildlichen Denken.",
+        about: [
+          "Dyslexie ist die häufigste spezifische Lernbesonderheit und betrifft schätzungsweise 5–10% der Bevölkerung. Sie betrifft, wie das Gehirn Laute auf Buchstaben abbildet und wie schnell vertraute Wörter abgerufen werden — sie hat nichts mit Intelligenz oder Anstrengung zu tun.",
+          "Jahrzehnte neurowissenschaftlicher Forschung zeigen messbare Unterschiede in den linkshemisphärischen Lese-Netzwerken, gut beschrieben in den Arbeiten von Sally und Bennett Shaywitz an der Yale University. Die gute Nachricht: Mit den richtigen Methoden (strukturierte Literacy / Orthographic Mapping) und Werkzeugen für Erwachsene (Vorlese-, Diktier- und Rechtschreibhilfen) können dyslektische Lesende und Schreibende voll aufblühen.",
+        ],
+        facts: [
+          "Etwa 5–10% der Menschen sind dyslektisch; es kommt familiär gehäuft vor (International Dyslexia Association).",
+          "Lese-Unterschied ist nicht gleich Intelligenz-Unterschied — IQ und Lesefähigkeit verlaufen weitgehend unabhängig (Ferrer et al., 2010).",
+          "Dyslektische Denkende sind in Unternehmertum, Design, Ingenieurwesen und Kunst überrepräsentiert.",
+          "Moderne Hilfstechnologien — Text-to-Speech, Spracheingabe, smarte Rechtschreibung — haben den Alltag mit Dyslexie verändert.",
+        ],
+        tips: [
+          "Nutze Audio parallel zum Text bei wichtigen Inhalten — Verständnis steigt, Erschöpfung sinkt.",
+          "Diktiere Erstentwürfe; redigiere später. Komposition und Rechtschreibung zu trennen ist ein echter Produktivitätsgewinn.",
+          "Serifenlose Schriften, grosszügige Zeilenabstände und gedämpft-weisse Hintergründe reduzieren visuellen Stress.",
+          "Sprich Dyslexie am Arbeitsplatz an — das ermöglicht Anpassungen und macht Eigenheiten zum Unterschied, der sie sind.",
+        ],
+        references: [
+          {
+            label: "International Dyslexia Association — Definition of Dyslexia",
+            url: "https://dyslexiaida.org/definition-of-dyslexia/",
+          },
+          {
+            label: "Ferrer et al. (2010) — Uncoupling of reading and IQ over time",
+            url: "https://doi.org/10.1177/0956797609354084",
+          },
+          {
+            label: "Yale Center for Dyslexia & Creativity",
+            url: "https://dyslexia.yale.edu/",
+          },
+        ],
       },
       {
         name: "AuDHS & Ko-Vorkommen",
         tags: ["Kombiniert", "Häufig"],
         body: "Viele neurodivergente Menschen sind mehr als eines. Die Kombination sieht oft anders aus als jedes für sich allein — und profitiert davon, als Ganzes betrachtet zu werden.",
         strengths: ["Einzigartige Perspektive", "Kreativität über Bereiche hinweg"],
+        imageLabel: "Bildplatzhalter — sich überlappende Kreise in warmen Farben",
+        summary:
+          "Die meisten neurodivergenten Menschen sind mehr als eine Sache zugleich. AuDHS und andere Ko-Profile verdienen es, als Ganzes verstanden zu werden — nicht als Tauziehen.",
+        about: [
+          "AuDHS beschreibt das gemeinsame Auftreten von Autismus und ADHS bei derselben Person — eine Kombination, die bis vor kurzem von Diagnosehandbüchern als unmöglich galt. Das DSM-5 (2013) liess beide Diagnosen schliesslich gemeinsam zu, und seither bestätigt die Forschung: Es ist eher häufig als selten.",
+          "Mit beiden gleichzeitig zu leben fühlt sich oft wie ein innerer Sog zwischen Neuheit und Routine an, zwischen sensorischer Überforderung und Reizsuche. Viele beschreiben lange Phasen, in denen sie für die eine Community 'zu viel des anderen' sind. Den ganzen Profilblick — statt jedes Etikett für sich — macht Unterstützung deutlich nützlicher.",
+        ],
+        facts: [
+          "Zwischen 50–70% der autistischen Menschen erfüllen auch ADHS-Kriterien; rund 30–50% der Menschen mit ADHS zeigen klinisch relevante autistische Merkmale (Hours et al., 2022).",
+          "Ko-Vorkommen ist die Regel, nicht die Ausnahme — Angst, Dyslexie, Dyspraxie, Dyskalkulie und Tourette gruppieren sich häufig.",
+          "Kombinierte Profile gehen oft mit fachübergreifender Kreativität, ethischer Klarheit und ungewöhnlichen Lösungswinkeln einher.",
+          "Behandlungen, die eine Seite ignorieren, bringen meist weniger; integrierte, personenzentrierte Unterstützung ist parallelen Pfaden überlegen.",
+        ],
+        tips: [
+          "Kartiere dein Profil als Ganzes — die Teile interagieren, die Unterstützung sollte es auch.",
+          "Baue Routinen, die für Neuheit offen sind; Struktur mit Notausgängen funktioniert besser als jedes Extrem.",
+          "Verfolge Energie über die Woche, nicht nur den Tag — Erholungszeit gehört zur Arbeit.",
+          "Suche Fachpersonen, die das Gesamtbild halten; fragmentierte Versorgung ist erschöpfend und greift selten.",
+        ],
+        references: [
+          {
+            label: "Hours, Recasens & Baleyte (2022) — ASD and ADHD comorbidity: review",
+            url: "https://doi.org/10.3389/fpsyt.2022.837424",
+          },
+          {
+            label: "Antshel & Russo (2019) — ASD and ADHD: overlapping phenomenology",
+            url: "https://doi.org/10.1007/s11920-019-1020-5",
+          },
+          {
+            label: "American Psychiatric Association — DSM-5 (2013) on co-occurrence",
+            url: "https://www.psychiatry.org/psychiatrists/practice/dsm",
+          },
+        ],
       },
     ],
     positiveSection: {
@@ -687,6 +906,45 @@ export const de: Dictionary = {
       editorialAltPrefix: "Editorial-Foto —",
     },
     dateLocale: "de-CH",
+  },
+  webinarsPage: {
+    hero: {
+      eyebrow: "Webinare",
+      title: "Schauen, lernen und in den Alltag mitnehmen.",
+      lead: "Aufgezeichnete Sessions von Fachpersonen und Coaches aus unserem Netzwerk — zu Aufmerksamkeit, sensorischer Regulation, später Diagnose und den praktischen Fragen, die unsere Community immer wieder stellt.",
+    },
+    filters: {
+      all: "Alle",
+      free: "Kostenlos",
+      paid: "Bezahlt",
+    },
+    freeBadge: "Kostenlos",
+    paidBadge: "Förder*in",
+    watchLabel: "Jetzt ansehen",
+    unlockLabel: "Freischalten",
+    closeLabel: "Schliessen",
+    durationLabel: "Dauer",
+    speakerLabel: "Referent:in",
+    lock: {
+      eyebrow: "Förder-Webinar",
+      title: "Schalte dieses Webinar mit einer Spende frei.",
+      body: "Unsere vertiefenden Sessions stellen wir Menschen zur Verfügung, die NSNS unterstützen. Eine Spende von {amount} schaltet dieses Webinar frei und hilft uns, Coaching, Peer-Mentoring und Community-Programme weiterzuführen.",
+      donateButton: "{amount} spenden und freischalten",
+      maybeLater: "Vielleicht später",
+      note: "Nach deiner Spende erhältst du per E-Mail einen privaten Link zum Ansehen.",
+    },
+    showingPrefix: "Anzeigen",
+    showingMiddle: "von",
+    showingSuffix: "Webinaren",
+    empty: {
+      title: "Keine Webinare passen zu diesem Filter.",
+      retry: "Probiere den Filter «Alle», um alle Aufzeichnungen zu sehen.",
+    },
+    cta: {
+      title: "Wünschst du dir ein Thema?",
+      body: "Wir nehmen jeden Monat neue Sessions auf, basierend auf den Anliegen der Community. Schlag uns ein Thema vor oder werde Gast-Referent:in.",
+      button: "Kontakt aufnehmen",
+    },
   },
   coachesPage: {
     hero: {
@@ -840,5 +1098,6 @@ export const de: Dictionary = {
     assessmentFaqs,
     positiveMessages,
     ndFacts,
+    webinars,
   },
 };
